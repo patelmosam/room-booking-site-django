@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from room.models import login_data
+from room.models import costomer_login
 
 from room.forms import login_form, info_form
 
@@ -28,7 +28,7 @@ def home(request):
 		data = request.POST.copy()
 		username = data.get("username")
 		password = data.get("password")
-		q = [x for x in login_data.objects.all() if x.username == username]
+		q = [x for x in costomer_login.objects.all() if x.username == username]
 		if username == "admin" and password == "anant":
 			return HttpResponseRedirect("/admin_home/")
 		elif len(q) > 0 and q[0].username == username and q[0].password == password:
@@ -55,10 +55,10 @@ def welcome(request):
 	data = request.POST.copy()
 	username = data.get("username")
 	password = data.get("password")
-	q = [x for x in login_data.objects.all() if x.username == username]
+	q = [x for x in costomer_login.objects.all() if x.username == username]
 	if len(q) != 0:
 		return HttpResponse("Login Failed: Username Already Exists!")
-	q = login_data()
+	q = costomer_login()
 	q.username = username
 	q.password = password
 	q.save()
@@ -77,10 +77,10 @@ def rm_welcome(request):
 	data = request.POST.copy()
 	username = data.get("username")
 	password = data.get("password")
-	q = [x for x in login_data.objects.all() if x.username == username]
+	q = [x for x in costomer_login.objects.all() if x.username == username]
 	if len(q) != 0:
 		return HttpResponse("Login Failed: Username Already Exists!")
-	q = login_data()
+	q = costomer_login()
 	q.username = username
 	q.password = password
 	q.save()
@@ -106,7 +106,7 @@ def rmhome(request):
 		data = request.POST.copy()
 		username = data.get("username")
 		password = data.get("password")
-		q = [x for x in login_data.objects.all() if x.username == username]
+		q = [x for x in costomer_login.objects.all() if x.username == username]
 		if username == "admin" and password == "mosam":
 			return HttpResponseRedirect("/admin_home/")
 		elif len(q) > 0 and q[0].username == username and q[0].password == password:
