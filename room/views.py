@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from polls.models import login_data
+from room.models import login_data
 
-from polls.forms import login_form, info_form
+from room.forms import login_form, info_form
 
 def index(request):
 	return HttpResponseRedirect('/login/')
@@ -21,7 +21,7 @@ def login(request):
 				return HttpResponse("Login Failed as Admin")
 	else:
 		form = login_form()
-	return render(request, 'polls/login.html', {'form':form})
+	return render(request, 'room/login.html', {'form':form})
 
 def home(request):
 	if request.method == "POST":
@@ -49,7 +49,7 @@ def new_user(request):
 			return HttpResponseRedirect("/welcome/")
 	else:
 		form = login_form()
-	return render(request, 'polls/signup.html', {'form':form})
+	return render(request, 'room/signup.html', {'form':form})
 
 def welcome(request):
 	data = request.POST.copy()
@@ -71,7 +71,7 @@ def new_manager(request):
 			return HttpResponseRedirect("/rmwelcome/")
 	else:
 		form = login_form()
-	return render(request, 'polls/rmsignup.html', {'form':form})
+	return render(request, 'room/rmsignup.html', {'form':form})
 
 def rm_welcome(request):
 	data = request.POST.copy()
@@ -99,7 +99,7 @@ def rm_login(request):
 				return HttpResponse("Login Failed as Admin")
 	else:
 		form = login_form()
-	return render(request, 'polls/rmlogin.html', {'form':form})
+	return render(request, 'room/rmlogin.html', {'form':form})
 
 def rmhome(request):
 	if request.method == "POST":
@@ -116,7 +116,7 @@ def rmhome(request):
 
 def rm_homepage(request):
 	form = info_form()
-	return render(request, 'polls/rmhome.html', {'form':form})
+	return render(request, 'room/rmhome.html', {'form':form})
 
 def rm_panel(request):
 	if request.method == "POST":
