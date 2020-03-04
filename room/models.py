@@ -17,3 +17,10 @@ class rooms_data(models.Model):
 	date_opted = models.CharField(max_length=100)
 	is_booked = models.BooleanField()
 	user_booked = models.CharField(max_length=100, null=True)
+
+
+class manager_login(models.Model):
+	def __str__(self):
+		return (str([self.username, self.password]))
+	username = models.CharField(max_length=100)
+	password = models.CharField(max_length=100)

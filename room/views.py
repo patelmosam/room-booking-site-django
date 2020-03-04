@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from room.models import costomer_login
 
-from room.forms import login_form, info_form
+from room.forms import login_form
 
 def index(request):
 	return HttpResponseRedirect('/login/')
 
-# Create your views here.
+#_______________costomer backend_________________________________________________ 
+
 def login(request):
 	if request.method == "POST":
 		form = login_form(request.POST)
@@ -79,9 +80,12 @@ def book_room(request):
 		form = booking_form()
 	return render(request, 'room/book_cust.html', {'form':form})
 
-def history(request):
+def view_book(request):
 	
 	return render(request, 'polls/history.html', {'data': q})
+
+
+#____________________manager backend ______________________________________________________-
 
 def new_manager(request):
 	if request.method == "POST":
