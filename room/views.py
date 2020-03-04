@@ -37,7 +37,12 @@ def home(request):
 			return HttpResponse("Login Failed")
 
 def cust_homepage(request):
-	return HttpResponse("CUSTOMER HOME ACTIVE")
+	#global Username
+	username = request.session['username']
+	data = rooms_data.objects.all()
+	context = {'history':'/history/', 'book':'/book/', 'del_book':'/del_book/', 'view_book':'/cust_book/','username':username, 'data':data, 'table':True}
+	
+	return render(request, "polls/customer_home.html", context)
 
 def admin_home(request):
 	return HttpResponse("ADMIN ACTIVE")
@@ -51,7 +56,7 @@ def new_user(request):
 		form = login_form()
 	return render(request, 'room/signup.html', {'form':form})
 
-def welcome(request):
+def welcome_cst(request):
 	data = request.POST.copy()
 	username = data.get("username")
 	password = data.get("password")
