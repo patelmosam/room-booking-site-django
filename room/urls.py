@@ -9,7 +9,9 @@ urlpatterns = [
 	path('login/', views.login, name="login"),
 	path('auth/', views.home, name="auth"),
 	path('rmsignup/', views.new_manager, name="rmsignup"),
-	path('customer_home/', views.cust_homepage, name="c_home"),
+	path('costomer_home/', views.cust_home, name="c_home"),
+	path('book/', views.book_room, name="book_room"),
+	path('view_book/', views.view_book, name='view_book'),
 	
 	path('rmwelcome/', views.rm_welcome, name="rmwelcome"),
 	path('rmlogin/',views.rm_login, name="rmlogin"),

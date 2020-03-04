@@ -32,17 +32,17 @@ def home(request):
 		if username == "admin" and password == "anant":
 			return HttpResponseRedirect("/admin_home/")
 		elif len(q) > 0 and q[0].username == username and q[0].password == password:
-			return HttpResponseRedirect("/customer_home/")
+			return HttpResponseRedirect("/costomer_home/")
 		else:
 			return HttpResponse("Login Failed")
 
-def cust_homepage(request):
+def cust_home(request):
 	#global Username
 	username = request.session['username']
 	data = rooms_data.objects.all()
 	context = {'history':'/history/', 'book':'/book/', 'del_book':'/del_book/', 'view_book':'/cust_book/','username':username, 'data':data, 'table':True}
 	
-	return render(request, "polls/customer_home.html", context)
+	return render(request, "room/costomer_home.html", context)
 
 def admin_home(request):
 	return HttpResponse("ADMIN ACTIVE")
@@ -68,6 +68,20 @@ def welcome_cst(request):
 	q.password = password
 	q.save()
 	return HttpResponse("Welcome, {}!".format(username))
+
+
+def book_room(request):
+	if request.method == "POST":
+		form = booking_form(request.POST)
+		if form.is_valid():
+			return HttpResponseRedirect("/confirm/")
+	else:
+		form = booking_form()
+	return render(request, 'room/book_cust.html', {'form':form})
+
+def history(request):
+	
+	return render(request, 'polls/history.html', {'data': q})
 
 def new_manager(request):
 	if request.method == "POST":
