@@ -16,6 +16,6 @@ urlpatterns = [
 	path('rmwelcome/', views.rm_welcome, name="rmwelcome"),
 	path('rmlogin/',views.rm_login, name="rmlogin"),
 	path('rmauth/', views.rmhome, name="rmauth"),
-	path('rm_home/', views.rm_homepage, name="rm_home"),
+	path('rm_home/', views.rm_home, name="rm_home"),
 	path('rmpanel/', views.rm_panel, name="rmpanel")
 ]

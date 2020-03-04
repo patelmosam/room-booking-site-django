@@ -124,6 +124,21 @@ def rm_login(request):
 		form = login_form()
 	return render(request, 'room/rmlogin.html', {'form':form})
 
+def rm_auth(request):
+	if request.method == "POST":
+		data = request.POST.copy()
+		username = data.get("username")
+		password = data.get("password")
+		q = [x for x in manager_login.objects.all() if x.username == username]
+		if username == "admin" and password == "mosam":
+			return HttpResponseRedirect("/admin_home/")
+		elif len(q) > 0 and q[0].username == username and q[0].password == password:
+			request.session["rmname"] = username
+			return HttpResponseRedirect("/rm_home/",{'username':username})
+		else:
+			return HttpResponse("Login Failed")
+
+
 def rmhome(request):
 	if request.method == "POST":
 		data = request.POST.copy()
@@ -137,7 +152,7 @@ def rmhome(request):
 		else:
 			return HttpResponse("Login Failed")
 
-def rm_homepage(request):
+def rm_home(request):
 	form = info_form()
 	return render(request, 'room/rmhome.html', {'form':form})
 
