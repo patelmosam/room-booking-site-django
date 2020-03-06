@@ -1,0 +1,51 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 2px solid white;
+            text-align: center;
+            padding: 8px;
+            text-decoration: dotted;
+        }
+    </style>
+
+</head>
+<body>
+    
+
+        <table style="margin-top:80px; color: black;">
+            <tbody>
+            <tr>
+              <td>room no.</td>
+              <td>data opted</td>
+              <td>start time</td>
+              <td>close time</td>
+              <td>booking stauts</td>
+            </tr>
+            {% for d in data %}
+            {% if username == d.user_booked %}
+            <tr>
+                <td>{{d.room_id}}</td> 
+                <td>{{d.date_opted}}</td>
+                <td>{{d.time_in}}</td>
+                <td>{{d.time_out}}</td>
+                <td>{{d.is_booked}}</td> 
+            </tr>
+            {% endif %}
+            {% endfor %}
+            </tbody>
+            </table>
+	</div>
+</body>
+</html>

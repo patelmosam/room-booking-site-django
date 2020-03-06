@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <title>
+    
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, intial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="{% static 'css/edit.css' %}" type="text/css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="all.min.css" rel="stylesheet" />
+    <link href="StyleSheet2.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            margin: auto;
+        }
+
+        td, th {
+            border: 2px solid white;
+            text-align: center;
+            padding: 8px;
+            text-decoration: dotted;
+            font-size: 20px;
+          
+        }
+    </style>
+<body>
+  <div class="container-fluid " style="height:750px; background-image: url({% static '301.jpg' %}); background-repeat: round";>
+    <a class="navbar-brand h4"  style="color: black;float:right;margin-top:20px;font-size: 20px;">LOGIN AS <h2 style="color: red;">({{username}})</h2></a> 
+
+      <form class="abc" style="margin-top: 500px;" action="/checkslot/" method="post">
+        {% csrf_token %}
+        <div class="grid-container" style=" grid-auto-flow: row;">
+        
+          
+          <div class="item5">
+              <span>Start Room:</span>
+              {{ form.start_room }}
+          </div>
+          <div class="item1"> 
+            <span> End Room:</span>
+            {{ form.end_room }}
+              </div>
+              <div class="item2"> 
+              <span> Time In:</span><br>
+              {{ form.time_in }}
+              </div>
+          <div class="item3">
+              <span>Time Out:</span>
+              {{ form.time_out }}
+                    </div>
+                    <div class="item4">
+              <span>Buffer Days:</span>
+              {{ form.buffer_days }}
+                    </div>
+          <div class="item6">
+                <span>Book Now:</span><br>
+                <input type="submit" value="Submit">
+                    </div>
+        </div>
+              
+          </form>
+
+          
+  </div>
+    
+  
+
+</body>
+</html>

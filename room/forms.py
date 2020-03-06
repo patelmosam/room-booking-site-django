@@ -9,3 +9,10 @@ class booking_form(forms.Form):
 	date_opted = forms.DateField(widget=forms.widgets.DateInput(attrs={'type':'date'}))
 	time_in = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type':'time'}))
 	time_out = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type':'time'}))
+
+class add_room(forms.Form):
+	start_room = forms.IntegerField()
+	end_room = forms.IntegerField()
+	time_in = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type':'time'}))
+	time_out = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type':'time'}))
+	buffer_days = forms.IntegerField()

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from room.models import costomer_login
 
-from room.forms import login_form
+from room.forms import login_form, booking_form, add_room 
 
 def index(request):
 	return HttpResponseRedirect('/login/')

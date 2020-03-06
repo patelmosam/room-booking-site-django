@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+	<div class="container-fluid " style="height:750px; background-image: url({% static 'h1_hero.jpg' %}); background-repeat: round";>
+			<form class="abc" style="margin-top: 600px;" action="/confirm/" method="post">
+				{% csrf_token %}
+            	<div class="grid-container" style="grid-auto-flow: row;">
+					<div class="item5">
+					    <span>Rooms:</span>
+					    {{ form.room_no }}
+                    </div>
+					<div class="item1">	
+						<span> Check In Date:</span>
+						{{ form.date_opted }}
+	       			</div>
+	       			<div class="item2">	
+					   	<span> Check Out Date:</span>
+					   	{{ form.date_opted }}
+	       			</div>
+					<div class="item3">
+					    <span>Check In Time:</span>
+					    {{ form.time_opted_in }}
+                    </div>
+                    <div class="item4">
+					    <span>Check Out Time:</span>
+					    {{ form.time_opted_out }}
+                    </div>
+					<div class="item6">
+				        <span>Book Now:</span>
+				        <input type="submit" value="Submit">
+                    </div>
+				</div>
+            	
+        	</form>
+	</div>
+		
+	
+
+</body>
+</html>

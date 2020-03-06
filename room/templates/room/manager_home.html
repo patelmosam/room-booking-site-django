@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            margin: auto;
+
+        }
+
+        td, th {
+            border: 2px solid yellow;
+            text-align: center;
+            padding: 8px;
+            text-decoration: dotted;
+        }
+    </style>
+
+</head>
+<body>
+    
+
+
+        <table style="margin-top:80px; color: white;">
+            <tbody>
+            <tr>
+              <td>start room</td>
+              <td>end room</td>
+              <td>start time</td>
+              <td>close time</td>
+              <td>buffer days</td>
+            </tr>
+            {% for d in data %}
+            <tr>
+              <td>{{d.start_room}}</td> 
+              <td>{{d.end_room}}</td>
+              <td>{{d.in_time}}</td>
+              <td>{{d.out_time}}</td>
+              <td>{{d.buffer_days}}</td> 
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+  </div>
+</body>
+</html>
