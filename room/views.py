@@ -9,6 +9,7 @@ def index(request):
 
 #_______________costomer backend_________________________________________________ 
 
+# done
 def login(request):
 	if request.method == "POST":
 		form = login_form(request.POST)
@@ -24,6 +25,7 @@ def login(request):
 		form = login_form()
 	return render(request, 'room/login.html', {'form':form})
 
+# done
 def home(request):
 	if request.method == "POST":
 		data = request.POST.copy()
@@ -37,17 +39,19 @@ def home(request):
 		else:
 			return HttpResponse("Login Failed")
 
+# done
 def cust_home(request):
-	#global Username
 	username = request.session['username']
 	data = rooms_data.objects.all()
 	context = {'history':'/history/', 'book':'/book/', 'del_book':'/del_book/', 'view_book':'/cust_book/','username':username, 'data':data, 'table':True}
 	
 	return render(request, "room/costomer_home.html", context)
 
+#done
 def admin_home(request):
 	return HttpResponse("ADMIN ACTIVE")
 
+# done
 def new_user(request):
 	if request.method == "POST":
 		form = login_form(request.POST)
@@ -57,6 +61,7 @@ def new_user(request):
 		form = login_form()
 	return render(request, 'room/signup.html', {'form':form})
 
+# done
 def welcome_cst(request):
 	data = request.POST.copy()
 	username = data.get("username")
@@ -70,7 +75,7 @@ def welcome_cst(request):
 	q.save()
 	return HttpResponse("Welcome, {}!".format(username))
 
-
+#  done
 def book_room(request):
 	if request.method == "POST":
 		form = booking_form(request.POST)
@@ -87,6 +92,7 @@ def view_book(request):
 
 #____________________manager backend ______________________________________________________-
 
+# done
 def new_manager(request):
 	if request.method == "POST":
 		form = login_form(request.POST)
@@ -96,6 +102,7 @@ def new_manager(request):
 		form = login_form()
 	return render(request, 'room/rmsignup.html', {'form':form})
 
+# done
 def rm_welcome(request):
 	data = request.POST.copy()
 	username = data.get("username")
@@ -109,6 +116,7 @@ def rm_welcome(request):
 	q.save()
 	return HttpResponse("Welcome, Manager {}!".format(username))
 
+# done
 def rm_login(request):
 	if request.method == "POST":
 		form = login_form(request.POST)
@@ -124,6 +132,7 @@ def rm_login(request):
 		form = login_form()
 	return render(request, 'room/rmlogin.html', {'form':form})
 
+#done
 def rm_auth(request):
 	if request.method == "POST":
 		data = request.POST.copy()
@@ -139,26 +148,19 @@ def rm_auth(request):
 			return HttpResponse("Login Failed")
 
 
-def rmhome(request):
-	if request.method == "POST":
-		data = request.POST.copy()
-		username = data.get("username")
-		password = data.get("password")
-		q = [x for x in costomer_login.objects.all() if x.username == username]
-		if username == "admin" and password == "mosam":
-			return HttpResponseRedirect("/admin_home/")
-		elif len(q) > 0 and q[0].username == username and q[0].password == password:
-			return HttpResponseRedirect("/rm_home/")
-		else:
-			return HttpResponse("Login Failed")
-
 def rm_home(request):
 	form = info_form()
 	return render(request, 'room/rmhome.html', {'form':form})
 
-def rm_panel(request):
+#done
+def add_rooms(request):
+	username = request.session["rmname"]
 	if request.method == "POST":
-		data = request.POST.copy()
-		no_of_rooms = data.get("no_of_rooms")
-		slot_time = data.get("slot_time")
-		return HttpResponse('NO OF ROOM IS : {}'.format(no_of_rooms))	
+		form = add_rooms(request.POST)
+		if form.is_valid():
+			return HttpResponseRedirect("/checkslot/")
+	else:
+		form = add_room()
+	return render(request, 'room/addrooms.html', {'form':form,'username':username})
+
+
