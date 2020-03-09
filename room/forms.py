@@ -16,3 +16,9 @@ class add_room(forms.Form):
 	time_in = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type':'time'}))
 	time_out = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type':'time'}))
 	buffer_days = forms.IntegerField()
+
+class deletion(forms.Form):
+	room_no = forms.IntegerField()
+	date_opted = forms.DateField(widget=forms.widgets.DateInput(attrs={'type':'date'}))
+	time_in = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type':'time'}))
+	time_out = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type':'time'}))

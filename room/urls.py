@@ -15,7 +15,7 @@ urlpatterns = [
 	path('rmwelcome/', views.rm_welcome, name="rmwelcome"),
 	path('rmsignup/', views.new_manager, name="rmsignup"),
 	path('rmlogin/',views.rm_login, name="rmlogin"),
-	path('rmauth/', views.rmhome, name="rmauth"),
+	path('rmauth/', views.rm_auth, name="rmauth"),
 	path('rm_home/', views.rm_home, name="rm_home"),
 	path('room/', views.add_rooms, name='add_rooms')
 ]
