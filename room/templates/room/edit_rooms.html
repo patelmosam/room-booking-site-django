@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<body>
+
+      <form class="abc" style="margin-top: 100px;" action="/confirm/" method="post">
+        {% csrf_token %}
+        <div class="grid-container" style="grid-auto-flow: row;">
+          <div class="item5">
+              <span>Id:</span><br>
+              <input type="text" id="id" name="id">
+          </div>
+          
+          <div class="item5">
+              <span>Start Room:</span>
+              {{ form.start_room }}
+          </div>
+          <div class="item1"> 
+            <span> End Room:</span>
+            {{ form.end_room }}
+              </div>
+              <div class="item2"> 
+              <span> Time In:</span><br>
+              {{ form.time_in }}
+              </div>
+          <div class="item3">
+              <span>Time Out:</span>
+              {{ form.time_out }}
+                    </div>
+                    <div class="item4">
+              <span>Buffer Days:</span>
+              {{ form.buffer_days }}
+                    </div>
+          <div class="item6">
+                <span>Book Now:</span><br>
+                <input type="submit" value="Submit">
+                    </div>
+        </div>
+              
+          </form>
+
+          <table style="margin-top:80px; color: black;">
+            <tbody>
+            <tr>
+              <td>id</td>
+              <td>start room</td>
+              <td>end room</td>
+              <td>start time</td>
+              <td>close time</td>
+              <td>buffer days</td>
+            </tr>
+        {% for d in data %}
+            <tr>
+            <td>{{d.id}}</td>
+            <td>{{d.start_room}}</td> 
+            <td>{{d.end_room}}</td>
+            <td>{{d.in_time}}</td>
+            <td>{{d.out_time}}</td>
+            <td>{{d.buffer_days}}</td> 
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+
+  </div>
+    
+  
+
+</body>
+</html>

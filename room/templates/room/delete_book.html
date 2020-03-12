@@ -1,0 +1,34 @@
+    <!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    
+   
+  
+        <table style="margin-top:80px; color: yellow;">
+            <tbody>
+            <tr>
+                <td>id</td>
+                <td>room no.</td>
+                <td>date opted</td>
+                <td>start time</td>
+                <td>close time</td>
+                <td>booking stutes</td>
+            </tr>
+            {% for d in data %}
+            <tr>
+                <td>{{d.id}}</td>
+                <td>{{d.room_id}}</td> 
+                <td>{{d.date_opted}}</td>
+                <td>{{d.time_in}}</td>
+                <td>{{d.time_out}}</td>
+                <td>{{d.is_booked}}</td> 
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+    </div>
+</body>
+</html>

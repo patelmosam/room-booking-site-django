@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<body>    
+
+    <div class="container-fluid" style="background-image: url({% static '15.jpg' %});background-repeat: repeat-y;">
+       <h1 style="font-size: 38px; color: red; text-align: center;">History</h1>
+       <br>
+        <table style="color: rgb(140, 81, 245);">
+            <tbody>
+            <tr>
+              <td>Room no.</td>
+              <td>Booking date</td>
+              <td>Check in Date</td>
+              <td>Booking Time</td>
+              <td>Time Slot</td>
+            </tr>
+            {% for d in data %}
+            <tr style="color: white;">
+              <td>{{d.room_id}}</td> 
+              <td>{{d.date_booking}}</td>
+              <td>{{d.date_opted}}</td>
+              <td>{{d.time_booking}}</td>
+              <td>{{d.time_opted}}</td> 
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+    </div>
+</body>
+</html>
+
+    

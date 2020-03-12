@@ -85,9 +85,28 @@ def book_room(request):
 		form = booking_form()
 	return render(request, 'room/book_cust.html', {'form':form})
 
+#done
 def view_book(request):
+	q = [x for x in rooms_history.objects.all() if x.username == request.session["username"]]
+	return render(request, 'room/history.html', {'data': q})
+
+#done
+def render_delete(request):
+	q = [x for x in rooms_data.objects.all() if x.user_booked == request.session["username"]]
+	return render(request, 'room/delete.html', {'data': q})
+
+#done
+def delete(request):
+	if request.method == "POST":
+		username = request.session['username']
+		data = request.POST.copy()
+		id = int(data.get('id'))
+		rooms_data.objects.filter(id=id).delete()
+		data = rooms_data.objects.all()
+		context = {'history':'/history/', 'book':'/book/', 'del_book':'/del_book/', 'view_book':'/cust_book/','username':username, 'data':data, 'table':True}
 	
-	return render(request, 'polls/history.html', {'data': q})
+	return render(request, "room/customer_home.html", context)
+
 
 
 #____________________manager backend ______________________________________________________-
@@ -147,10 +166,13 @@ def rm_auth(request):
 		else:
 			return HttpResponse("Login Failed")
 
-
+#done
 def rm_home(request):
-	form = info_form()
-	return render(request, 'room/rmhome.html', {'form':form})
+	username = request.session["rmname"]
+	data = added_rooms.objects.all()
+	context = {'room':'/room/', 'del_room':'/del_room/', 'edit_room':'/edit_room/','data': data, 'username': username}
+	return render(request, "room/manager_home.html", context)
+
 
 #done
 def add_rooms(request):
@@ -162,5 +184,31 @@ def add_rooms(request):
 	else:
 		form = add_room()
 	return render(request, 'room/addrooms.html', {'form':form,'username':username})
+
+#done
+def delete_room(request):
+	if request.method == "POST":
+		return HttpResponseRedirect("/checkslot/")
+	else:
+		data = added_rooms.objects.all()
+		return render(request, 'room/deleteroom.html', {'data':data})
+
+#done
+def delete_auth(request):
+	if request.method == "POST":
+		data = request.POST.copy()
+		id = int(data.get('id'))
+		added_rooms.objects.filter(id=id).delete()
+		data = added_rooms.objects.all()
+		context = {'room':'/room/', 'del_room':'/del_room/', 'edit_room':'/edit_room/', 'table': True, 'data': data}
+	return render(request, 'room/manager_home.html', context)
+
+#done
+def edit_rooms(request):
+	form = add_room()
+	data = added_rooms.objects.all()
+	return render(request, 'room/editrooms.html', {'form':form, 'data':data})
+
+
 
 
