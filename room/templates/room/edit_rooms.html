@@ -39,7 +39,7 @@
   <div class="container-fluid " style=" background-image: url({% static 'plain.jpg' %}); background-repeat: repeat-y;";>
     <a class="navbar-brand h4"  style="color: black;float:right;margin-top:20px;font-size: 20px;">LOGIN AS <h4 style="color: red;">({{username}})</h4></a> 
 
-      <form class="abc" style="margin-top: 100px;" action="/confirm/" method="post">
+      <form class="abc" style="margin-top: 100px;" action="/confirm_book/" method="post">
         {% csrf_token %}
         <div class="grid-container" style="grid-auto-flow: row;">
           <div class="item5">
