@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from room.models import costomer_login
-
-from room.forms import login_form, booking_form, add_room 
+from room.models import costomer_login, rooms_history, rooms_data, added_rooms, manager_login
+from datetime import datetime
+from room.forms import login_form, booking_form, deletion, add_room
 
 def index(request):
 	return HttpResponseRedirect('/login/')
@@ -35,15 +35,15 @@ def home(request):
 		if username == "admin" and password == "anant":
 			return HttpResponseRedirect("/admin_home/")
 		elif len(q) > 0 and q[0].username == username and q[0].password == password:
-			return HttpResponseRedirect("/costomer_home/")
+			request.session["username"] = username
+			return HttpResponseRedirect("/costomer_home/",{'username':username})
 		else:
 			return HttpResponse("Login Failed")
-
 # done
 def cust_home(request):
 	username = request.session['username']
 	data = rooms_data.objects.all()
-	context = {'history':'/history/', 'book':'/book/', 'del_book':'/del_book/', 'view_book':'/cust_book/','username':username, 'data':data, 'table':True}
+	context = {'view_book':'/view_book/','book':'/book/', 'del_book':'/del_book/','username':username, 'data':data, 'table':True}
 	
 	return render(request, "room/costomer_home.html", context)
 
@@ -95,9 +95,9 @@ def confirm_book(request):
 	if request.method == "POST":
 		data = request.POST.copy()
 		date_opted = data.get("date_opted")
-		time_opted_in = data.get("time_opted_in")
+		time_opted_in = data.get("time_in")
 		tin = time_opted_in.split(':')
-		time_opted_out = data.get("time_opted_out")
+		time_opted_out = data.get("time_out")
 		tout = time_opted_out.split(':')
 		room_no = data.get("room_no")
 		today = str(datetime.date(datetime.now()))
@@ -159,7 +159,7 @@ def add_booking(request, room_no, date_opted, time_opted_in, time_opted_out):
 	q.save()
 	username = request.session["username"]
 	rdata = rooms_data.objects.all()
-	context = {'history':'/history/', 'book':'/book/', 'del_book':'/del_book/', 'view_book':'/cust_book/','username':username, 'data':rdata, 'table':True}
+	context = {'view_book':'/view_book/', 'book':'/book/', 'del_book':'/del_book/','username':username, 'data':rdata, 'table':True}
 	return context
 
 
@@ -176,9 +176,9 @@ def delete(request):
 		id = int(data.get('id'))
 		rooms_data.objects.filter(id=id).delete()
 		data = rooms_data.objects.all()
-		context = {'history':'/history/', 'book':'/book/', 'del_book':'/del_book/', 'view_book':'/cust_book/','username':username, 'data':data, 'table':True}
+		context = {'view_book':'/view_book/', 'book':'/book/', 'del_book':'/del_book/', 'username':username, 'data':data, 'table':True}
 	
-	return render(request, "room/customer_home.html", context)
+	return render(request, "room/costomer_home.html", context)
 
 
 
@@ -199,10 +199,10 @@ def rm_welcome(request):
 	data = request.POST.copy()
 	username = data.get("username")
 	password = data.get("password")
-	q = [x for x in costomer_login.objects.all() if x.username == username]
+	q = [x for x in manager_login.objects.all() if x.username == username]
 	if len(q) != 0:
 		return HttpResponse("Login Failed: Username Already Exists!")
-	q = costomer_login()
+	q = manager_login()
 	q.username = username
 	q.password = password
 	q.save()
@@ -251,9 +251,9 @@ def rm_home(request):
 def add_rooms(request):
 	username = request.session["rmname"]
 	if request.method == "POST":
-		form = add_rooms(request.POST)
+		form = add_room(request.POST)
 		if form.is_valid():
-			return HttpResponseRedirect("/checkslot/")
+			return HttpResponseRedirect("/checkroom/")
 	else:
 		form = add_room()
 	return render(request, 'room/addrooms.html', {'form':form,'username':username})
@@ -309,7 +309,7 @@ def check_added_room(request):
 			return render(request, 'room/manager_home.html', context)
 
 #done
-def add_rooms(request, id, start_room, end_room, time_in, time_out, bdays, type_):
+def add_slot(request, id, start_room, end_room, time_in, time_out, bdays, type_):
 	username = request.session["rmname"]	
 	if type_ == 'new':
 		q = added_rooms()
@@ -335,7 +335,7 @@ def add_rooms(request, id, start_room, end_room, time_in, time_out, bdays, type_
 #done
 def delete_room(request):
 	if request.method == "POST":
-		return HttpResponseRedirect("/check_added_room/")
+		return HttpResponseRedirect("/checkroom/")
 	else:
 		data = added_rooms.objects.all()
 		return render(request, 'room/delete_room.html', {'data':data})
