@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  {% load static %}
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<link href="bootstrap.min.css" rel="stylesheet" />-->
+
+    <link href="all.min.css" rel="stylesheet" />
+
+
+    <link href="StyleSheet2.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -22,6 +37,12 @@
 </head>
 <body>
     
+    <div class="container-fluid" style="height: 750px; background-image: url({% static 'Download.jpg' %});background-repeat:repeat-y;">
+        <a class="navbar-brand h4" href="{{ room }}" style="color: orchid;margin-top:20px;margin-left:10px;">Add Room</a>
+        <a class="navbar-brand h4" href="{{ del_room }}" style="color: lime;margin-top:20px;margin-left:20px;">Remove Room</a>
+        <a class="navbar-brand h4" href="{{ edit_room }}" style="color: lavender;margin-top:20px;margin-left:20px;">Edit Room</a>
+        <a class="navbar-brand h4"  style="color:yellow;float:right;margin-top:20px;">LOGIN AS<h4 style="color: red;">({{username}})</h4></a> 
+         
 
 
         <table style="margin-top:80px; color: white;">

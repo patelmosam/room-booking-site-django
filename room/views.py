@@ -88,7 +88,7 @@ def book_room(request):
 #done
 def view_book(request):
 	q = [x for x in rooms_history.objects.all() if x.username == request.session["username"]]
-	return render(request, 'room/history.html', {'data': q})
+	return render(request, 'room/view_book.html', {'data': q})
 
 #done
 def confirm_book(request):
@@ -166,7 +166,7 @@ def add_booking(request, room_no, date_opted, time_opted_in, time_opted_out):
 #done
 def render_delete(request):
 	q = [x for x in rooms_data.objects.all() if x.user_booked == request.session["username"]]
-	return render(request, 'room/delete.html', {'data': q})
+	return render(request, 'room/delete_book.html', {'data': q})
 
 #done
 def delete(request):
@@ -335,10 +335,10 @@ def add_rooms(request, id, start_room, end_room, time_in, time_out, bdays, type_
 #done
 def delete_room(request):
 	if request.method == "POST":
-		return HttpResponseRedirect("/checkslot/")
+		return HttpResponseRedirect("/check_added_room/")
 	else:
 		data = added_rooms.objects.all()
-		return render(request, 'room/deleteroom.html', {'data':data})
+		return render(request, 'room/delete_room.html', {'data':data})
 
 #done
 def delete_auth(request):
@@ -354,7 +354,7 @@ def delete_auth(request):
 def edit_rooms(request):
 	form = add_room()
 	data = added_rooms.objects.all()
-	return render(request, 'room/editrooms.html', {'form':form, 'data':data})
+	return render(request, 'room/edit_rooms.html', {'form':form, 'data':data})
 
 
 
