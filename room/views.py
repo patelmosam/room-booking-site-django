@@ -131,7 +131,7 @@ def confirm_book(request):
 													return HttpResponse('room is already booked!!')
 									
 								context = add_booking(request, room_no, date_opted, time_opted_in, time_opted_out)
-								return render(request, "room/customer_home.html", context)
+								return render(request, "room/costomer_home.html", context)
 			#   end checking in rooms_data
 				else:
 					return HttpResponse('please enter valid time slot')	
