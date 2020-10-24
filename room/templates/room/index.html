@@ -1,0 +1,22 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+<head>
+    <title> YOYO Rooms </title>
+    <style>
+        #heading { color: red;}
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to YOYO Rooms</h1>
+        <p class="lead">YOYO gives you best online hotel booking experience.</p>
+        <hr class="my-4">
+        <p>Book the hotel room just in few clicks with affordable price.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'explore' %}" role="button">Explore</a>
+      </div>
+
+</body>
+
+{% endblock %}

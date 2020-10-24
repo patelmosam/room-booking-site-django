@@ -1,0 +1,169 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html> -->
+<head>
+<title>My Hotel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  color: white;
+}
+
+.split {
+  height: 80%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 20;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  background-color: rgb(230, 219, 219);
+}
+
+.right {
+  right: 0;
+  background-color: rgb(151, 187, 189);
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+#login .container #login-row #login-column #login-box {
+    margin-top: 10px;
+    max-width: 600px;
+    height: 450px;
+    border: 1px solid #111010;
+    background-color: #d3d3d3;
+    
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 10px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -10px;
+  }
+  .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          padding: 18px;
+          text-align: center;
+          background-color: rgb(151, 187, 189);
+        }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        }
+</style>
+</head>
+<body>
+
+<div class="split left">
+  <div class="centered">
+    
+    <div class="card">
+        <img src="{% static 'images/hotel1.jpeg' %}" class="center" alt="hotel1"  style="width:80%">
+        <div class="container">
+            <form id="login-form" class="form" action="/my_hotel/" method="post">
+                {% csrf_token %}
+                <!-- <p>update profile picture</p> -->
+                <!-- <button type="button" class="btn btn-info btn-md"> Upload </button>-->
+                <div class="form-group">
+                    <label for="myfile">Update profile picture:</label>
+                    <input type="file" id="myfile" name="myfile">
+                </div>
+                <div class="form-group">
+                    <label for="name" >Name of Hotel:</label>
+                    <input type="text" name="name" id="name" placeholder="{{data.name}}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="address" > Address of Hotel:</label>
+                    <input type="adderss" name="adderss" id="adderss" placeholder="{{data.address}}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="save" class="btn btn-info btn-md" value="save">
+                </div>
+            </form>
+       </div> 
+    </div>
+  </div>
+</div>
+
+<div class="split right">
+    <div id="login">
+        <h3 class="text-center text-black pt-5" >Hotel Info</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+							{% csrf_token %}
+                            <h3 class="text-center text-info" >Settings</h3>
+                            <div class="form-group">
+                                <label for="totel" class="text-info">Totel Rooms:</label><br>
+                                <input type="number" name="totel" id="totel" placeholder="{{data.rooms}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="Price" class="text-info">Price:</label><br>
+                                <input type="number" name="price" id="price" placeholder="{{data.price}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="type" class="text-info">Hotel Type:</label><br>
+                                <select id="type" name="type" >
+                                    <option value="7 star">7 star</option>
+                                    <option value="5 star">5 star</option>
+                                    <option value="3 star">3 star</option>
+                                    <option value="2 star">2 star</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="discription" class="text-info">Discription:</label><br>
+                                <input type="text" name="discription" id="discription" placeholder="{{data.discription}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
+								<input type="submit" name="save" class="btn btn-info btn-md" value="save">
+								<!-- <a href='/'>
+									<button type="button" class="btn btn-info btn-md" style="float: right;">
+										Back
+									</button>
+								</a> -->
+                            </div>
+                            <!-- <div id="register-link" class="text-right">
+                                <a href="#" class="text-info">Forget Password</a>
+                            </div> -->
+                        </form>
+					</div>
+					<div>
+						{% for message in messages %}
+						<h4>{{ message }}</h4>
+						{% endfor %}
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     
+</body>
+<!-- </html>  -->
+
+
+{% endblock %}

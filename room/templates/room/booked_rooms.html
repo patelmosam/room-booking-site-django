@@ -1,0 +1,69 @@
+<!-- <!DOCTYPE html>
+<html> -->
+    {% extends 'room/base.html' %}
+
+    {% block content %}
+    <head>
+      {% load static %}
+        <title></title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--<link href="bootstrap.min.css" rel="stylesheet" />-->
+        <link href="all.min.css" rel="stylesheet" />
+        <link href="StyleSheet2.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <style>
+          table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+          
+          tr:nth-child(even) {
+            background-color: #dddddd;
+          }
+        </style>
+    
+    </head>
+    <body>    
+    
+        <div class="container-fluid" style="height: 750px;">
+           <h1 style="font-size: 38px; color: red; text-align: center;">History</h1>
+           <br>
+            <table style="color: rgb(140, 81, 245);">
+                <tbody>
+                <tr>
+                  <td>User Booked</td>
+                  <td>Room no.</td>
+                  <td>Check in Date</td>
+                  <td>Check out Date</td>
+                  <td>Price</td>
+                </tr>
+                
+                {% for d in data %}
+                <tr style="color: black">
+                  <td>{{d.user_booked}}</td> 
+                  <td>{{d.room_id}}</td>
+                  <td>{{d.start}}</td>
+                  <td>{{d.end}}</td>
+                  <td>{{d.price}}</td> 
+                </tr>
+                {% endfor %}
+                
+                </tbody>
+                </table>
+        </div>
+    </body>
+    <!-- </html> -->
+    {% endblock %}
+        

@@ -2,38 +2,42 @@ from django.db import models
 
 # Create your models here.
 
-class costomer_login(models.Model):
-	def __str__(self):
-		return (str([self.username, self.password]))
-	username = models.CharField(max_length=100)
-	password = models.CharField(max_length=100)
+# class costomer_login(models.Model):
+# 	def __str__(self):
+# 		return (str([self.username, self.password]))
+# 	username = models.CharField(max_length=100)
+# 	password = models.CharField(max_length=100)
 
-class rooms_data(models.Model):
+class rooms_booked(models.Model):
 	def __str__(self):
-		return (str([self.room_id, self.time_in, self.time_out, self.is_booked, self.user_booked, self.date_opted]))
+		return (str([self.room_id, self.start, self.end, self.is_booked, 
+					self.user_booked, self.owner, self.hotel, self.price]))
 	room_id = models.IntegerField()
-	time_in = models.CharField(max_length=100)
-	time_out = models.CharField(max_length=100)
-	date_opted = models.CharField(max_length=100)
+	start = models.DateField()
+	end = models.DateField()
 	is_booked = models.BooleanField()
-	user_booked = models.CharField(max_length=100, null=True)
+	user_booked = models.CharField(max_length=100)
+	owner = models.CharField(max_length=50)
+	hotel = models.CharField(max_length=50)
+	price = models.IntegerField()
 
 
-class manager_login(models.Model):
+# class manager_login(models.Model):
+# 	def __str__(self):
+# 		return (str([self.username, self.password]))
+# 	username = models.CharField(max_length=100)
+# 	password = models.CharField(max_length=100)
+
+class rooms_added(models.Model):
 	def __str__(self):
-		return (str([self.username, self.password]))
-	username = models.CharField(max_length=100)
-	password = models.CharField(max_length=100)
-
-class added_rooms(models.Model):
-	def __str__(self):
-		return (str([self.start_room, self.end_room, self.in_time,
-				self.out_time, self.buffer_days]))
+		return (str([self.owner, self.start_room, self.end_room, self.start,
+				self.end, self.price]))
+	owner = models.CharField(max_length=50)
 	start_room = models.IntegerField()
 	end_room = models.IntegerField()
-	in_time = models.CharField(max_length=100)
-	out_time = models.CharField(max_length=100)
-	buffer_days = models.IntegerField()
+	start = models.DateField()
+	end = models.DateField()
+	price = models.IntegerField()
 
 class rooms_history(models.Model):
 	def __str__(self):
@@ -47,3 +51,17 @@ class rooms_history(models.Model):
 	time_booking = models.TimeField()
 	time_opted = models.CharField(max_length=50)
 	username = models.CharField(max_length=100)
+
+class hotels(models.Model):
+	def __str__(self):
+		return(str([self.name, self.owner, self.rooms,
+				self.picture, self.address, self.Type,
+				self.price, self.discription]))
+	name = models.CharField(max_length=50)
+	owner = models.CharField(max_length=50)
+	rooms = models.IntegerField()
+	picture = models.FileField()
+	address = models.CharField(max_length=500)
+	Type = models.CharField(max_length=10)
+	price = models.IntegerField()
+	discription = models.CharField(max_length=500)

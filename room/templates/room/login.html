@@ -1,46 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-	{% load static %}
-	<title>
-		Bootstrap
-	</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, intial-scale=1">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<link href="{% static 'css/global.css' %}" type="text/css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<title>Customer Login</title>
+
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+		background-color: #FFFFFF; 
+		height: 100vh;
+	  }
+	  #login .container #login-row #login-column #login-box {
+		margin-top: 50px;
+		max-width: 600px;
+		height: 320px;
+		border: 1px solid #111010;
+		background-color: #d3d3d3;
+		
+	  }
+	  #login .container #login-row #login-column #login-box #login-form {
+		padding: 20px;
+	  }
+	  #login .container #login-row #login-column #login-box #login-form #register-link {
+		margin-top: -85px;
+	  }
+</style>
 </head>
 <body>
-	<div class="container-fluid " style="height:750px; background-image: url({% static '30.jpg' %}); background-repeat: repeat-y;">
-		<div class="row">
-
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<form class="form-container" style="margin-top: 150px;" action="/auth/" method="post">
-					{% csrf_token %}
-					<h1 style="color: white">Login</h1>
-				  <div class="form-group">
-				    <label for="exampleInputEmail1" style="color: white">Username</label><br>
-				    {{ form.username }}
-				  </div>
-				  <br>
-				  <div class="form-group">
-				    <label for="exampleInputPassword1" style="color: white">Password</label><br>
-				    {{form.password}}
-
-				  </div>
-				  <br>
-				  <button type="submit" class="btn btn-success btn-block" style="background-color:orange">Login</button>
-				  <button type="submit" class="btn btn-success btn-block" style="background-color: white; color: black">Signup-customer</button>
-				  <button type="submit" class="btn btn-success btn-block">Signup-Manager</button>
-				</form>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-			
-		</div>
-	</div>
-
+    <div id="login">
+        <h3 class="text-center text-black pt-5" >Customer Login</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="/login/" method="post">
+							{% csrf_token %}
+                            <h3 class="text-center text-info" >Login</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+								<input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+								<a href='/'>
+									<button type="button" class="btn btn-info btn-md" style="float: right;">
+										Back
+									</button>
+								</a>
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="#" class="text-info">Forget Password</a>
+                            </div>
+                        </form>
+					</div>
+					<div>
+						{% for message in messages %}
+						<h3>{{ message }}</h3>
+						{% endfor %}
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+

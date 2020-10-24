@@ -1,49 +1,66 @@
-<!DOCTYPE html>
-<html>
+<!-- <!DOCTYPE html>
+<html> -->
+{% extends 'room/base.html' %}
+{% block content %}
 <head>
 	{% load static %}
 	<title>
-		
+		Book Room
 	</title>
-	<meta charset="utf-8">
+	<!-- <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, intial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link href="{% static 'css/global.css' %}" type="text/css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
 </head>
 <body>
-	<div class="container-fluid " style="height:750px; background-image: url({% static '30.jpg' %}); background-repeat: round";>
-			<form class="abc" style="margin-top: 60px;" action="/confirm_book/" method="post">
+	<div class="container" style="height:750px;">
+			<form class="form-inline" style="margin-top: 60px;" action="/book_room/" method="post">
 				{% csrf_token %}
             	<div class="grid-container" style="grid-auto-flow: row;">
-					<div class="item5">
-					    <span>Rooms:</span>
-					    {{ form.room_no }}
-                    </div>
-					<div class="item1">	
-						<span> Check In Date:</span>
-						{{ form.date_opted }}
-	       			</div>
-					<div class="item3">
-					    <span>Check In Time:</span>
-					    {{ form.time_in }}
-                    </div>
-                    <div class="item4">
-					    <span>Check Out Time:</span>
-					    {{ form.time_out }}
-                    </div>
-					<div class="item6">
-				        <span>Book Now:</span>
-				        <input type="submit" value="Submit">
-                    </div>
+				<div class="form-group">
+				<label for="hotel">Hotel Name :</label>
+				<select id="hotel" name="hotel" >
+					<option value="{{data.name}}">{{data.name}}</option>
+				</select>
 				</div>
-            	
-        	</form>
+            	<div class="form-group">
+					<label for="from">Rooms No. : </label>
+					<input type="number" class="form-control" id="from" min=0 max=10 name="from">
+				  </div>
+				<!-- <div class="form-group">
+				<label for="to">Rooms To: </label>
+				<input type="number" class="form-control" id="to" min=0 max={{data.rooms}} name="to">
+				</div> -->
+				<div class="form-group">
+				<label for="start">Start Date : </label>
+				<input type="date" class="form-control" id="start" name="start">
+				</div>
+				<div class="form-group">
+				<label for="start">End Date : </label>
+				<input type="date" class="form-control" id="end" name="end">
+				</div>
+				<div class="form-group">
+				<label for="guest">No. of guests : </label>
+				<input type="number" class="form-control" id="guest" min=0 max=5 name="guest">
+				</div>
+				<div class="form-group">
+					<label for="price">Price :</label>
+					<select id="price" name="price" >
+						<option value="{{data.price}}">&#8377 {{data.price}}</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-info mx-1">Submit</button>
+			</form>
+			{% for message in messages %}
+			<h4>{{ message }}</h4>
+			{% endfor %}
 	</div>
 		
 	
 
 </body>
-</html>
+<!-- </html> -->
+{% endblock %}
