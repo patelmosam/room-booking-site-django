@@ -9,7 +9,27 @@ body {
 }
 
 footer {
-    bottom: 0;
-    position: absolute;
+    bottom:0;
+    width: 100%;
+    position: fixed;
+    padding: 25px;
+    background: #fff;
+    opacity: 80%;
+}
+footer .outer-container{
     width: 100%;
 }
+
+footer .outer-container .inner-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.custom-text ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

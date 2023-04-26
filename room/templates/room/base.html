@@ -15,8 +15,8 @@
 
 
     <!-- <title>GUEST HOUSE BOOKING</title> -->
-
-
+    <!-- Specific page css goes here ###########-->
+    {% block stylesheets %} {% endblock stylesheets %}
 
 </head>
 <body>
@@ -144,9 +144,9 @@
 {% block content %}
 {% endblock %}
 
-<footer class="footer py-3 bg-light text-center">
-    <div class="container">
-        <div class="row">
+<footer class="footer">
+    <div class="outer-container">
+        <div class="inner-container">
             <div class="col-md-6 my-auto">
                 <a style="margin-left: 1.5%;" href="https://www.facebook.com" target="_blank"><img
                         src="{% static 'images/facebook.png' %}"
@@ -162,7 +162,7 @@
                         width="45px"></a>
 
             </div>
-            <div class="col-md-6 text-dark my-auto">
+            <div class="custom-text">
                 <ul style="list-style-type:none;">
                     <li><a href="" class="text-dark" target="_blank" style="text-decoration: none">Help</a>
                     </li>
