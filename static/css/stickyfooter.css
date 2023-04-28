@@ -32,4 +32,7 @@ footer .outer-container .inner-container{
     justify-content: center;
     align-items: center;
 }
+.custom-text ul li{
+    padding: 10px;
+}
 

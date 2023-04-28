@@ -7,6 +7,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 
 
+
 #__________________User Authentication________________________________________________________________________# 
 
 def login(request):
@@ -250,30 +251,40 @@ def add_rooms(request):
 def my_hotel(request):
 	if request.method == 'POST':
 		user = request.user.username
-		try:
+
+		if (request.POST.get('btnUpload_File_2', False)) is not False:
+
+			picture = request.FILES['UpLoad']
+			hdata = hotels.objects.get(owner=user)
+			hdata.picture.delete()
+			hdata.picture = picture
+			hdata.save()
+
+			return render(request, "room/my_hotel.html", {'data': hdata})
+
+		if (request.POST.get('save', False)) is not False:
 			name = request.POST['name']
 			address = request.POST['adderss']
-			profile = request.POST['myfile']
+
 			messages.info(request, 'Profile saved')
 
 			if hotels.objects.filter(owner=user):
 				hotel = hotels.objects.get(owner=user)
 				hotel.name = name
 				hotel.address = address
-				hotel.picture = profile
 				hotel.save()
 			else:
 				hotel = hotels()
 				hotel.name = name
 				hotel.owner = user
 				hotel.address = address
-				hotel.picture = profile
 				hotel.rooms = 0
 				hotel.price = 0
 				hotel.Type = ""
 				hotel.discription = ""
 				hotel.save()
-		except:
+
+		if (request.POST.get('save2', False)) is not False:
 			totel = request.POST['totel']
 			price = request.POST['price']
 			Type = request.POST['type']

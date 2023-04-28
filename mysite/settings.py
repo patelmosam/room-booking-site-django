@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'fontawesomefree'
     
 ]
 
@@ -80,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'guestbookingdb',
         'USER': 'postgres',
-        'PASSWORD': '26082001',
+        'PASSWORD': 'Fulltech#@4545',
         'HOST': 'localhost',
         'PORT': '5432',
     }
