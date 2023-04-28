@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66e92dfe-2678-40bf-a044-1fd008e826b2" name="Changes" comment="Merge branch 'room_booking_new' of https://github.com/EliteTeamDev/room-booking-site-django into room_booking_new">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/room-booking-site-django.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/room-booking-site-django.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/room/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room/templates/room/addrooms.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/addrooms.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room/templates/room/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room/templates/room/my_hotel.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/my_hotel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/room/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/stickyfooter.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/stickyfooter.css" afterDir="false" />
-    </list>
+    <list default="true" id="66e92dfe-2678-40bf-a044-1fd008e826b2" name="Changes" comment="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682670945044</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new">
+      <created>1682671309812</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682671309812</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +135,8 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/EliteTeamDev/room-booking-site-django" />
     <MESSAGE value="explore to book now" />
     <MESSAGE value="Merge branch 'room_booking_new' of https://github.com/EliteTeamDev/room-booking-site-django into room_booking_new" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'room_booking_new' of https://github.com/EliteTeamDev/room-booking-site-django into room_booking_new" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
