@@ -5,7 +5,7 @@ from datetime import datetime
 from room.forms import login_form, booking_form, deletion, add_room
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-
+from datetime import date
 
 
 #__________________User Authentication________________________________________________________________________# 
@@ -196,57 +196,65 @@ def view_book(request):
 def add_rooms(request):
 	# username = request.session["rmname"]
 	owner = request.user.username
+	rooms_pro = rooms_added.objects.filter(owner=owner)
 	if request.method == "POST":
-		from_ = request.POST['from']
-		to = request.POST['to']
-		start = request.POST['start']
-		end = request.POST['end']
-		price = request.POST['price']
-		
-		sy, ey = int(start.split('-')[0]), int(end.split('-')[0])
-		sd, sm = int(start.split('-')[2]), int(start.split('-')[1])  
-		ed, em = int(start.split('-')[2]), int(start.split('-')[1]) 
-		if sy <= ey and sm <= em and sd <= ed:
-			if rooms_added.objects.filter(owner=owner):
-				r = rooms_added.objects.get(owner=owner)
-			
-				# for r in rdata:
-				if r.end_room < int(from_) :
+		if (request.POST.get('add_room', False)) is not False:
+
+			if len(request.POST['room_number']) is not 0 and len(request.POST['price']) is not 0:
+
+				room_number = request.POST['room_number']
+				price = request.POST['price']
+				description = request.POST['description']
+
+				try:
+					# when this line generates en error the exception handling catches it and runs the 'except_block'
+					error_generation_line = rooms_added.objects.get(owner=owner, room_number=room_number)
+					messages.info(request, 'that room was already added')
+
+				except:
 					room = rooms_added()
 					room.owner = owner
-					room.start_room = from_
-					room.end_room = to
-					room.start = start
-					room.end = end
+					room.room_number = room_number
+					room.date_added = date.today()
 					room.price = price
+					room.is_booked = 0
+					room.room_description = description
 					room.save()
 					messages.info(request, 'Rooms are added')
-				else:
-					messages.info(request, 'rooms are already added')
-					return render(request, 'room/addrooms.html')
 
+				return redirect('/add_rooms/#add_rooms')
 			else:
-				room = rooms_added()
-				room.owner = owner
-				room.start_room = from_
-				room.end_room = to
-				room.start = start
-				room.end = end
-				room.price = price
-				room.save()
-				messages.info(request, 'Rooms are added')
-				return render(request, 'room/addrooms.html')
+				messages.info(request, 'please enter data')
+				return redirect('/add_rooms/#add_rooms')
+
 		else:
-			messages.info(request, 'rooms con\'t be add')
-			return render(request, 'room/addrooms.html')
-			# return HttpResponseRedirect("/checkroom/")
-		return render(request, 'room/addrooms.html')
+			for rooms_pro in rooms_pro:
+				if (request.POST.get('btnDel_' + str(rooms_pro.room_number), False)) is not False:
+					room = rooms_added.objects.get(owner=owner, room_number=rooms_pro.room_number)
+					room.delete()
+					return redirect('/add_rooms/')
+				try:
+					if (request.POST.get('btnUpload_File_' + str(rooms_pro.room_number), False)) is not False:
+						picture = request.FILES['UpLoad_' + str(rooms_pro.room_number)]
+						room = rooms_added.objects.get(owner=owner, room_number=rooms_pro.room_number)
+						room.room_picture.delete()
+						room.room_picture = picture
+						room.save()
+
+						return redirect('/add_rooms/')
+				except:
+					return redirect('/add_rooms/')
 	else:
 		owner = request.user.username
-		data = hotels.objects.get(owner=owner)
-		return render(request, 'room/addrooms.html', {'data':data})
 
+		context = {}
 
+		hotel_pro = hotels.objects.get(owner=owner)
+
+		context['hotel_pro'] = hotel_pro
+		context['rooms_pro'] = rooms_pro
+
+		return render(request, 'room/addrooms.html', context)
 
 def my_hotel(request):
 	if request.method == 'POST':

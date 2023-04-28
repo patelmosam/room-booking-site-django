@@ -2,6 +2,10 @@
 <html> -->
 {% extends 'room/base.html' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/static/css/specific_page_css/add_rooms.css">
+{% endblock stylesheets %}
+
 {% block content %}
 <head>
   <!-- {% load static %} -->
@@ -14,38 +18,115 @@
 </head>
 
 <body>
-  <div id="add">
-    <div class="container">
-      <h3 class="text-center text-black pt-5"> Add Rooms </h3>
-      <form class="form-inline" action="/add_rooms/" method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="from">Room number </label>
-          <input type="number" class="form-control" id="from" min=0 max={{data.rooms}} name="from">
-        </div>
-        <div class="form-group">
-          <label for="start">Start Date : </label>
-          <input type="date" class="form-control" id="start" name="start">
-        </div>
-        <div class="form-group">
-          <label for="start">End Date : </label>
-          <input type="date" class="form-control" id="end" name="end">
-        </div>
-        <div class="form-group">
-          <label for="price">Price : </label>
-          <input type="number" class="form-control" id="price" min=0 name="price">
-        </div>
-        <button type="submit" class="btn btn-info mx-1">Submit</button>
-      </form>
-    </div>
-    <div>
-      {% for message in messages %}
-      <h4>{{ message }}</h4>
-      {% endfor %}
-    </div>
-  </div>
+    <div id="add">
+        <div class="container_2">
+            <form class="room_pro_dis" method="post" action="/add_rooms/" enctype="multipart/form-data">
 
-      
+                {% csrf_token %}
+
+                {% for room_pro in rooms_pro %}
+                    <div class="dynamic_cards_container">
+                        <div class="profile-sts">
+
+                            {% with room_pro.room_picture as picture_filename %}
+
+                                {% if picture_filename %}
+                                    <img class="pro-img" src="/{{picture_filename}}" id="photo" alt="Image here">
+                                {% else %}
+                                    <img class="d-pro-img" src="{%  static 'images/rooms/default_room.svg' %}" id="photo" alt="Image here">
+                                {% endif %}
+
+                            {% endwith %}
+
+                            <input type="submit" class="btnUpload_File" name="btnUpload_File_{{ room_pro.room_number }}" value="Update">
+                            <input type="file" name="UpLoad_{{ room_pro.room_number }}" id="UpLoad" accept="image/*">
+                        </div>
+
+
+                        <h4 class="room_title">
+                            Room Number {{ room_pro.room_number }}
+                        </h4>
+                        <div class="description">
+                            {% if room_pro.is_booked %}
+                                <p>This room is booked</p>
+                            {% else %}
+                                <p>This room is not booked</p>
+                            {% endif %}
+
+                            <p class="room_owner">Owned by: {{ room_pro.owner }}</p>
+                            <p class="room_price">Price {{ room_pro.price }}</p>
+                            <p class="description">
+                                {{ room_pro.room_description }}
+                            </p>
+                        </div>
+
+                        <button
+                                class="btnDel"
+                                name="btnDel_{{ room_pro.room_number }}"
+                                type="submit"
+                                value="test_name"
+                        >
+                            <i class="fa-solid fa-trash-can"></i> Unshelve room
+                        </button>
+                    </div>
+                {% endfor %}
+
+                <div id="add_rooms" class="card_add_rooms">
+                    <h3 class="card_title">Add Room</h3>
+
+                    <div class="card_description">
+                        <p>
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            Use this card to add rooms along <br>
+                            with other data that is the price and <br>
+                            description.
+                        </p>
+                    </div>
+
+                    <input
+                            name="room_number"
+                            type="number"
+                            class="form-control"
+                            id="from"
+                            min=0
+                            max="{{hotel_pro.rooms}}"
+                            placeholder="enter room number"
+
+                    >
+
+                    <input
+                            type="number"
+                            class="form-control"
+                            id="price"
+                            min=0
+                            name="price"
+                            placeholder="enter room price"
+
+                    >
+
+                    <input
+                            name="description"
+                            type="text"
+                            class="form-control"
+                            id="from"
+                            placeholder="enter room description"
+                    >
+
+                    {% for message in messages %}
+                        <div class="result">
+                            <p>
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                {{ message }}
+                            </p>
+                        </div>
+                    {% endfor %}
+
+                    <button type="submit" name="add_room" class="add-room">Add Room</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 {% endblock %}
 <!-- </html> -->

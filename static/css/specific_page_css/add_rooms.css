@@ -1,0 +1,239 @@
+.room_pro_dis{
+	display: grid;
+	grid-template-columns: 350px 350px 350px 350px;
+	grid-column-gap: 30px;
+	grid-row-gap: 30px;
+	justify-content: center;
+	padding-top: 50px;
+	padding-bottom: 300px;
+}
+.profile-sts{
+    position: relative;
+    width: 300px;
+	height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 80%;
+	margin: 30px;
+
+}
+.profile-sts .pro-img{
+    border-radius: 80%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profile-sts .d-pro-img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	padding: 40px;
+	background: #fff;
+}
+.profile-sts .btnUpload_File
+{
+	font-family:FontAwesome,sans-serif;
+	background: black;
+	color: #fff;
+	position: absolute;
+	border: none;
+	top: 0;
+	left:0;
+	width: 100%;
+	opacity: 0%;
+	padding: 171.5px 50px 30px 52px;
+	transition: .4s;
+}
+.profile-sts .btnUpload_File:hover{
+	opacity: 80%;
+}
+
+.profile-sts input[type="file"]
+{
+	background: black;
+	border-radius: 5px;
+	position: absolute;
+	cursor: pointer;
+	opacity: 70%;
+	transition: .4s;
+	padding-top: 5px;
+	padding-bottom: 20px;
+	margin-top:75%;
+	margin-left: -7px;
+	padding-left: 130px;
+
+}
+.profile-sts input[type="file"]:hover{
+	opacity: 95%;
+}
+
+.profile-sts input[type="file"]::-webkit-file-upload-button{
+	visibility: hidden;
+}
+.profile-sts input[type="file"]::before{
+	content: "\f030";
+	font-family:FontAwesome;
+	font-size: 30px;
+	margin-left:7px;
+	color: #fff;
+	display:inline-block;
+	padding-right: 150px;
+}
+.profile-sts input[type="file"]::after{
+	content: "edit\f304";
+	font-family:FontAwesome;
+	display: block;
+	font-size: 10px;
+	color: #fff;
+	margin-top: 3px;
+	margin-left:7px;
+	margin-bottom: 15px;
+}
+/*body edit*/
+.dynamic_cards_container{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: fit-content;
+	background: #17a2b8;
+	border-radius: 10px;
+	align-items: center;
+	width: 100%;
+
+}
+.dynamic_cards_container .description{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.dynamic_cards_container .btnDel{
+	background: none;
+	border: none;
+	margin: 10px;
+	border-radius: 2px;
+}
+.dynamic_cards_container .btnDel:hover{
+	color: red;
+	border: none;
+}
+.card_title{
+	margin-top: 20px;
+}
+.card_description i{
+	align-self: baseline;
+	padding-right: 30px;
+}
+.card_description{
+	margin: 10px;
+	border-radius: 5px;
+	padding: 5px;
+	display: flex;
+	border: 1px solid #0ee416;
+	color: #0ee416;
+
+	background: rgb(49,174,54);
+	background:
+			linear-gradient(
+			90deg,
+			rgba(49,174,54,0.5) 0%,
+			rgba(49,174,54,0.4962359943977591) 100%
+			);
+}
+.card_add_rooms {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #17a2b8;
+	border-radius: 10px;
+	height: fit-content;
+	width: fit-content;
+}
+
+.card_add_rooms input{
+	background: #18adc5;
+	margin: 10px;
+	border: none;
+	width: 270px;
+	max-width: 100%;
+}
+.card_add_rooms button{
+	width: 100%;
+	border-radius: 0px 0px 10px 10px;
+	border: none;
+	background: #116f7e;
+	padding: 5px;
+	transition: ease .1s;
+}
+.card_add_rooms button:active{
+	background: #116f7e;
+}
+.card_add_rooms button:hover{
+	background: none;
+}
+.result{
+	padding: 10px;
+	display: flex;
+	border-radius: 5px;
+	margin: 10px;
+	border: 1px solid #0ee416;
+	color: #0ee416;
+
+	background: rgb(49,174,54);
+	background:
+			linear-gradient(
+			90deg,
+			rgba(49,174,54,0.5) 0%,
+			rgba(49,174,54,0.4962359943977591) 100%
+			);
+}
+.result i{
+	align-self: baseline;
+	margin-right: 5px ;
+}
+/* responsiveness */
+@media(max-width: 1510px){
+	.room_pro_dis{
+		display: grid;
+		grid-template-columns: 350px 350px 350px;
+	}
+}
+
+@media(max-width: 1120px){
+	.room_pro_dis{
+		display: grid;
+		grid-template-columns: 350px 350px;
+	}
+}
+
+@media(max-width: 750px){
+	.room_pro_dis{
+		display: grid;
+		grid-template-columns: 500px;
+	}
+	.card_add_rooms {
+		justify-self: center;
+	}
+}
+
+@media(max-width: 530px){
+	.room_pro_dis{
+		display: grid;
+		grid-template-columns: 350px;
+	}
+
+}
+
+@media(max-width: 360px){
+	.room_pro_dis{
+		display: grid;
+		grid-template-columns: 350px;
+		zoom: 70%;
+	}
+
+}

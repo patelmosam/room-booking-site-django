@@ -165,7 +165,11 @@
             <!-- <h3>{{d.picture}}</h3> -->
                 <div class="column">
                     <div class="card">
-                        <img src="{% static 'images/hotel1.jpeg' %}" alt="hotel1"  style="width:100%">
+
+                    {% with d.picture as picture_filename %}
+                        <img src="/{{picture_filename}}" alt="hotel1"  style="width:100%">
+                    {% endwith %}
+
                         <div class="container">
                         <h4><b>{{d.name}}</b></h4> 
                         <p>{{d.address}}</p> 
