@@ -31,13 +31,13 @@ class rooms_booked(models.Model):
 class rooms_added(models.Model):
 	def __str__(self):
 		return (str([self.owner, self.start_room, self.end_room, self.start,
-				self.end, self.price]))
+				self.end, self.price, self.is_booked]))
 	owner = models.CharField(max_length=50)
-	start_room = models.IntegerField()
-	end_room = models.IntegerField()
+	room_number = models.IntegerField()
 	start = models.DateField()
 	end = models.DateField()
 	price = models.IntegerField()
+	is_booked = models.IntegerField()
 
 class rooms_history(models.Model):
 	def __str__(self):
@@ -55,12 +55,12 @@ class rooms_history(models.Model):
 class hotels(models.Model):
 	def __str__(self):
 		return(str([self.name, self.owner, self.rooms,
-				self.picture, self.address, self.Type,
+				self.picture_name, self.picture, self.address, self.Type,
 				self.price, self.discription]))
 	name = models.CharField(max_length=50)
 	owner = models.CharField(max_length=50)
 	rooms = models.IntegerField()
-	picture = models.FileField()
+	picture = models.FileField(upload_to='static/images/')
 	address = models.CharField(max_length=500)
 	Type = models.CharField(max_length=10)
 	price = models.IntegerField()

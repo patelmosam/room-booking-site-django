@@ -1,5 +1,10 @@
 {% extends 'room/base.html' %}
 
+<!--specific page css goes here-->
+{% block stylesheets %}
+    <link rel="stylesheet" href="/static/css/specific_page_css/my_hotel.css">
+{% endblock stylesheets %}
+
 {% block content %}
 {% load static %}
 <!-- <!DOCTYPE html>
@@ -40,11 +45,6 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
-.centered img {
-  width: 150px;
-  border-radius: 50%;
-}
 #login .container #login-row #login-column #login-box {
     margin-top: 10px;
     max-width: 600px;
@@ -79,16 +79,28 @@ body {
   <div class="centered">
     
     <div class="card">
-        <img src="{% static 'images/hotel1.jpeg' %}" class="center" alt="hotel1"  style="width:80%">
+<!-- this is the page image upload section --->
+        <form class="pro-img" action="/my_hotel/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <div class="profile-sts">
+
+                {% with data.picture as picture_filename %}
+                    <img src="/{{picture_filename}}" id="photo">
+                {% endwith %}
+
+                <input type="submit" class="btnUpload_File" name="btnUpload_File_2" value="Update">
+                <input type="file" name="UpLoad" id="UpLoad" accept="image/*" required>
+            </div>
+
+        </form>
+<!-- that page end image section ---->
+
         <div class="container">
             <form id="login-form" class="form" action="/my_hotel/" method="post">
                 {% csrf_token %}
                 <!-- <p>update profile picture</p> -->
                 <!-- <button type="button" class="btn btn-info btn-md"> Upload </button>-->
-                <div class="form-group">
-                    <label for="myfile">Update profile picture:</label>
-                    <input type="file" id="myfile" name="myfile">
-                </div>
+
                 <div class="form-group">
                     <label for="name" >Name of Hotel:</label>
                     <input type="text" name="name" id="name" placeholder="{{data.name}}" class="form-control">
@@ -113,20 +125,21 @@ body {
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
+
+                        <form id="login-form" class="form" action="/my_hotel/" method="post">
 							{% csrf_token %}
                             <h3 class="text-center text-info" >Settings</h3>
                             <div class="form-group">
-                                <label for="totel" class="text-info">Totel Rooms:</label><br>
-                                <input type="number" name="totel" id="totel" placeholder="{{data.rooms}}" class="form-control">
+                                <label for="totel" class="text-info">Hotel Rooms:</label><br>
+                                <input required type="number"  name="totel" id="totel" placeholder="{{data.rooms}}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="Price" class="text-info">Price:</label><br>
-                                <input type="number" name="price" id="price" placeholder="{{data.price}}" class="form-control">
+                                <input type="number" required name="price" id="price" placeholder="{{data.price}}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="type" class="text-info">Hotel Type:</label><br>
-                                <select id="type" name="type" >
+                                <select required id="type" name="type" >
                                     <option value="7 star">7 star</option>
                                     <option value="5 star">5 star</option>
                                     <option value="3 star">3 star</option>
@@ -135,11 +148,11 @@ body {
                             </div>
                             <div class="form-group">
                                 <label for="discription" class="text-info">Discription:</label><br>
-                                <input type="text" name="discription" id="discription" placeholder="{{data.discription}}" class="form-control">
+                                <input type="text" required name="discription" id="discription" placeholder="{{data.discription}}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
-								<input type="submit" name="save" class="btn btn-info btn-md" value="save">
+								<input type="submit" name="save2" class="btn btn-info btn-md" value="save">
 								<!-- <a href='/'>
 									<button type="button" class="btn btn-info btn-md" style="float: right;">
 										Back
@@ -164,6 +177,5 @@ body {
      
 </body>
 <!-- </html>  -->
-
 
 {% endblock %}

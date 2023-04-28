@@ -4,7 +4,7 @@
 <html lang="en" style="height: 100%;">
 <head>
     <!-- Required meta tags -->
-
+    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -13,10 +13,12 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/stickyfooter.css' %}">
 
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+	<link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-    <!-- <title>YOYO Rooms</title> -->
-
-
+    <!-- <title>GUEST HOUSE BOOKING</title> -->
+    <!-- Specific page css goes here ###########-->
+    {% block stylesheets %} {% endblock stylesheets %}
 
 </head>
 <body>
@@ -24,7 +26,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent shadow">
     <div class="container">
-        <a class="navbar-brand mb-0 h1" href="/">YOYO</a>
+        <a class="navbar-brand mb-0 h1" href="/">GUEST BOOKING</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'explore' %}">Explore <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'explore' %}">Book Now <span class="sr-only">(current)</span></a>
                 </li>
                 
 
@@ -144,9 +146,9 @@
 {% block content %}
 {% endblock %}
 
-<footer class="footer py-3 bg-light text-center">
-    <div class="container">
-        <div class="row">
+<footer class="footer">
+    <div class="outer-container">
+        <div class="inner-container">
             <div class="col-md-6 my-auto">
                 <a style="margin-left: 1.5%;" href="https://www.facebook.com" target="_blank"><img
                         src="{% static 'images/facebook.png' %}"
@@ -162,7 +164,7 @@
                         width="45px"></a>
 
             </div>
-            <div class="col-md-6 text-dark my-auto">
+            <div class="custom-text">
                 <ul style="list-style-type:none;">
                     <li><a href="" class="text-dark" target="_blank" style="text-decoration: none">Help</a>
                     </li>

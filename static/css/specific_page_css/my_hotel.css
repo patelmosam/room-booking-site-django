@@ -1,0 +1,84 @@
+.card .pro-img{
+	display: flex;
+	width:100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.card form .profile-sts{
+    position: relative;
+    width: 300px;
+	height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 80%;
+    border: 2px solid var(--accent-3);
+}
+.card form .profile-sts img{
+    border-radius: 80%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card form .profile-sts .btnUpload_File
+{
+	font-family:FontAwesome,sans-serif;
+	background: black;
+	color: var(--accent-2);
+	position: absolute;
+	border: none;
+	top: 0;
+	left:0;
+	width: 100%;
+	opacity: 0%;
+	padding: 171.5px 50px 30px 52px;
+	transition: .4s;
+}
+.card form .profile-sts .btnUpload_File:hover{
+	opacity: 80%;
+}
+
+.card form .profile-sts input[type="file"]
+{
+	background: black;
+	border-radius: 5px;
+	position: absolute;
+	cursor: pointer;
+	opacity: 70%;
+	transition: .4s;
+	padding-top: 5px;
+	padding-bottom: 20px;
+	margin-top:75%;
+	margin-left: -150px;
+	padding-left: 130px;
+
+}
+.card form .profile-sts input[type="file"]:hover{
+	opacity: 95%;
+}
+
+.card form .profile-sts input[type="file"]::-webkit-file-upload-button{
+	visibility: hidden;
+}
+.card form .profile-sts input[type="file"]::before{
+	content: "\f030";
+	font-family:FontAwesome;
+	font-size: 30px;
+	margin-left:7px;
+	color: var(--accent-2);
+	display:inline-block;
+	padding-right: 150px;
+}
+.card form .profile-sts input[type="file"]::after{
+	content: "edit\f304";
+	font-family:FontAwesome;
+	display: block;
+	font-size: 10px;
+	color: var(--accent-2);
+	margin-top: 3px;
+	margin-left:7px;
+	margin-bottom: 15px;
+}
