@@ -60,69 +60,87 @@
                             </p>
                         </div>
 
-                        <button
+                        {% if user.is_superuser %}
+
+                            <button
+                                    class="btnDel"
+                                    name="btnDel_{{ room_pro.room_number }}"
+                                    type="submit"
+                                    value="test_name"
+                            >
+                                <i class="fa-solid fa-trash-can"></i> Unshelve room
+                            </button>
+
+                        {% else %}
+
+                            <button
                                 class="btnDel"
-                                name="btnDel_{{ room_pro.room_number }}"
+                                name="btnBook_{{ room_pro.room_number }}"
+                                value="{{room_pro.owner}}"
                                 type="submit"
-                                value="test_name"
-                        >
-                            <i class="fa-solid fa-trash-can"></i> Unshelve room
-                        </button>
+                            >
+                                <i class="fa-solid fa-cart-shopping"></i> Book Room
+                            </button>
+
+                        {% endif %}
+
                     </div>
                 {% endfor %}
 
-                <div id="add_rooms" class="card_add_rooms">
-                    <h3 class="card_title">Add Room</h3>
+                {% if user.is_superuser %}
+                    <div id="add_rooms" class="card_add_rooms">
+                        <h3 class="card_title">Add Room</h3>
 
-                    <div class="card_description">
-                        <p>
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            Use this card to add rooms along <br>
-                            with other data that is the price and <br>
-                            description.
-                        </p>
-                    </div>
-
-                    <input
-                            name="room_number"
-                            type="number"
-                            class="form-control"
-                            id="from"
-                            min=0
-                            max="{{hotel_pro.rooms}}"
-                            placeholder="enter room number"
-
-                    >
-
-                    <input
-                            type="number"
-                            class="form-control"
-                            id="price"
-                            min=0
-                            name="price"
-                            placeholder="enter room price"
-
-                    >
-
-                    <input
-                            name="description"
-                            type="text"
-                            class="form-control"
-                            id="from"
-                            placeholder="enter room description"
-                    >
-
-                    {% for message in messages %}
-                        <div class="result">
+                        <div class="card_description">
                             <p>
                                 <i class="fa-solid fa-triangle-exclamation"></i>
-                                {{ message }}
+                                Use this card to add rooms along <br>
+                                with other data that is the price and <br>
+                                description.
                             </p>
                         </div>
-                    {% endfor %}
 
-                    <button type="submit" name="add_room" class="add-room">Add Room</button>
-                </div>
+                        <input
+                                name="room_number"
+                                type="number"
+                                class="form-control"
+                                id="from"
+                                min=0
+                                max="{{hotel_pro.rooms}}"
+                                placeholder="enter room number"
+
+                        >
+
+                        <input
+                                type="number"
+                                class="form-control"
+                                id="price"
+                                min=0
+                                name="price"
+                                placeholder="enter room price"
+
+                        >
+
+                        <input
+                                name="description"
+                                type="text"
+                                class="form-control"
+                                id="from"
+                                placeholder="enter room description"
+                        >
+
+                        {% for message in messages %}
+                            <div class="result">
+                                <p>
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                    {{ message }}
+                                </p>
+                            </div>
+                        {% endfor %}
+
+                        <button type="submit" name="add_room" class="add-room">Add Room</button>
+                    </div>
+                {% endif %}
             </form>
         </div>
     </div>

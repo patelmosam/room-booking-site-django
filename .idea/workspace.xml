@@ -4,29 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66e92dfe-2678-40bf-a044-1fd008e826b2" name="Changes" comment="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new">
-      <change afterPath="$PROJECT_DIR$/room/migrations/0007_auto_20230429_1620.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/room/migrations/0008_alter_rooms_added_room_picture.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/room/migrations/0009_alter_rooms_added_room_picture.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/room/migrations/0010_auto_20230429_2345.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/room/migrations/0011_auto_20230429_2356.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/specific_page_css/add_rooms.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/IMG_20220501_172209.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/IMG_2173.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/default_room.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_AHpLS6l.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_AbZJ8MJ.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_jyfm3V1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_yD1Hhzp.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_z4P2ma6.jpg" afterDir="false" />
+    <list default="true" id="66e92dfe-2678-40bf-a044-1fd008e826b2" name="Changes" comment="Update workspace.xml">
+      <change afterPath="$PROJECT_DIR$/room/migrations/0012_remove_rooms_booked_is_booked.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/specific_page_css/book_cust.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/rooms/pexels-ram-iyengar-2875698_yX1s3e0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/rooms/pexels-ramazan-ceran-5648605.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/rooms/pexels-ramazan-ceran-5648605_lHucqE7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/rooms/pexels-skitterphoto-2678.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_8g03kvM.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_S2sBQEh.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_xs9nnHV.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/room/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/room/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/room/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/room/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/room/templates/room/addrooms.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/addrooms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/room/templates/room/book_cust.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/book_cust.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/room/templates/room/explore.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/explore.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/room/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/room/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/room/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/IMG_20210611_171122.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +109,8 @@
       <updated>1682425633312</updated>
       <workItem from="1682425637489" duration="3962000" />
       <workItem from="1682430813003" duration="15853000" />
-      <workItem from="1682767987884" duration="44442000" />
+      <workItem from="1682767987884" duration="45276000" />
+      <workItem from="1682846327573" duration="30570000" />
     </task>
     <task id="LOCAL-00001" summary="explore to book now">
       <created>1682670644294</created>
@@ -152,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682671843150</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update workspace.xml">
+      <created>1682819422054</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682819422054</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,14 +177,15 @@
     <MESSAGE value="explore to book now" />
     <MESSAGE value="Merge branch 'room_booking_new' of https://github.com/EliteTeamDev/room-booking-site-django into room_booking_new" />
     <MESSAGE value="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new" />
+    <MESSAGE value="Update workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update workspace.xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/room/views.py</url>
-          <line>289</line>
+          <line>334</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

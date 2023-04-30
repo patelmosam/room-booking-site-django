@@ -1,0 +1,63 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    background: #cccccc;
+    padding: 30px;
+    border-radius: 5px;
+    position: absolute;
+    opacity: 90%;
+    width: 50%;
+}
+.container form .form-group,
+.container form .form-group .input-group
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container form .form-group .input-group input{
+    background: #116f7e;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    width: 350px;
+    padding: 7px;
+    color-scheme: dark;
+}
+.container form .form-group .input-group .input-group-prepend .input-group-text{
+    background: #17a2b8;
+    border: none;
+}
+
+.container form .form-group .date-input-1::after{
+    content: 'Date to sart your stay';
+    margin-left: 200px;
+    margin-top: -23px;
+    font-size: 12px;
+    position: absolute;
+    color: #fff;
+}
+.container form .form-group .date-input-2::after{
+    content: 'Date to end your stay';
+    margin-left: 200px;
+    margin-top: -23px;
+    font-size: 12px;
+    position: absolute;
+    color: #fff;
+}
+
+.background_1{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 0;
+    display: flex;
+}

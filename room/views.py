@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from room.models import rooms_history, rooms_booked, rooms_added, hotels
-from datetime import datetime
 from room.forms import login_form, booking_form, deletion, add_room
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
@@ -137,6 +136,8 @@ def explore(request):
 		data = hotels.objects.all()
 		return render(request, 'room/explore.html', {'data':data})
 
+
+
 def profile(request):
 	return render(request, 'room/profile.html')
 
@@ -174,11 +175,25 @@ def book_room(request):
 			
 	else:
 		try:
-			hotel = request.GET.get('name')
-			# price = request.GET.get('price')
-			data = hotels.objects.get(name=hotel)
-			# rooms_booked.objects.filter(id=2).delete()
-			return render(request, 'room/book_cust.html', {'data':data})
+			owner = request.session['owner']
+			room = request.session['room_number']
+
+			print()
+			print()
+			print(request.session['owner'])
+			print()
+			print()
+
+			hotel = hotels.objects.get(owner=owner)
+			room = rooms_added.objects.get(owner=owner, room_number=room)
+
+			return render(
+				request, 'room/book_cust.html', {
+					'form': booking_form,
+					'hotel': hotel,
+					'room': room
+				}
+			)
 		except:
 			return redirect('/explore/')
 
@@ -197,6 +212,7 @@ def add_rooms(request):
 	# username = request.session["rmname"]
 	owner = request.user.username
 	rooms_pro = rooms_added.objects.filter(owner=owner)
+
 	if request.method == "POST":
 		if (request.POST.get('add_room', False)) is not False:
 
@@ -227,12 +243,26 @@ def add_rooms(request):
 				messages.info(request, 'please enter data')
 				return redirect('/add_rooms/#add_rooms')
 
+		elif not request.user.is_superuser:
+
+			rooms = rooms_added.objects.all()
+
+			for room in rooms:
+				if (request.POST.get('btnBook_'+str(room.room_number), False)) is not False:
+
+					request.session['owner'] = request.POST['btnBook_'+str(room.room_number)]
+					request.session['room_number'] = room.room_number
+
+					return redirect('/book_room/')
+
 		else:
 			for rooms_pro in rooms_pro:
 				if (request.POST.get('btnDel_' + str(rooms_pro.room_number), False)) is not False:
 					room = rooms_added.objects.get(owner=owner, room_number=rooms_pro.room_number)
 					room.delete()
 					return redirect('/add_rooms/')
+
+
 				try:
 					if (request.POST.get('btnUpload_File_' + str(rooms_pro.room_number), False)) is not False:
 						picture = request.FILES['UpLoad_' + str(rooms_pro.room_number)]
@@ -244,17 +274,32 @@ def add_rooms(request):
 						return redirect('/add_rooms/')
 				except:
 					return redirect('/add_rooms/')
+
 	else:
-		owner = request.user.username
+		try:
+			owner = request.user.username
 
-		context = {}
+			context = {}
 
-		hotel_pro = hotels.objects.get(owner=owner)
+			hotel_pro = hotels.objects.get(owner=owner)
 
-		context['hotel_pro'] = hotel_pro
-		context['rooms_pro'] = rooms_pro
+			context['hotel_pro'] = hotel_pro
+			context['rooms_pro'] = rooms_pro
+			return render(request, 'room/addrooms.html', context)
 
-		return render(request, 'room/addrooms.html', context)
+		except:
+			hotel = request.GET.get('name')
+			context = {}
+
+			hotel_pro = hotels.objects.get(name=hotel)
+			rooms = rooms_added.objects.filter(owner=hotel_pro.owner)
+
+			context['hotel_pro'] = hotel_pro
+			context['rooms_pro'] = rooms
+
+			return render(request, 'room/addrooms.html', context)
+
+
 
 def my_hotel(request):
 	if request.method == 'POST':

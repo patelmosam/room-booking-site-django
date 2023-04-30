@@ -175,7 +175,7 @@
                         <p>{{d.address}}</p> 
                         <p>&#8377 {{d.price}} </p>
                         {% if not user.is_superuser %}
-                        <a href="{% url 'book_room' %}?name={{d.name}}&price={{d.price}}">
+                        <a href="{% url 'add_rooms' %}?name={{d.name}}">
                         <button type="button"  class="btn btn-info btn-md"> Book </button>
                         </a>
                         {% endif %}
