@@ -1,6 +1,11 @@
 <!-- <!DOCTYPE html>
 <html> -->
 {% extends 'room/base.html' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/static/css/specific_page_css/book_cust.css">
+{% endblock stylesheets %}
+
 {% block content %}
 <head>
 	{% load static %}
@@ -16,50 +21,65 @@
 
 </head>
 <body>
+    <img class="background_1" src="/static/images/bg_img_1.jpg" alt="there was an image supposed to show here">
 	<div class="container" style="height:750px;">
-			<form class="form-inline" style="margin-top: 60px;" action="/book_room/" method="post">
-				{% csrf_token %}
-            	<div class="grid-container" style="grid-auto-flow: row;">
-				<div class="form-group">
-				<label for="hotel">Hotel Name :</label>
-				<select id="hotel" name="hotel" >
-					<option value="{{data.name}}">{{data.name}}</option>
-				</select>
-				</div>
-            	<div class="form-group">
-					<label for="from">Rooms No. : </label>
-					<input type="number" class="form-control" id="from" min=0 max=10 name="from">
-				  </div>
-				<!-- <div class="form-group">
-				<label for="to">Rooms To: </label>
-				<input type="number" class="form-control" id="to" min=0 max={{data.rooms}} name="to">
-				</div> -->
-				<div class="form-group">
-				<label for="start">Start Date : </label>
-				<input type="date" class="form-control" id="start" name="start">
-				</div>
-				<div class="form-group">
-				<label for="start">End Date : </label>
-				<input type="date" class="form-control" id="end" name="end">
-				</div>
-				<div class="form-group">
-				<label for="guest">No. of guests : </label>
-				<input type="number" class="form-control" id="guest" min=0 max=5 name="guest">
-				</div>
-				<div class="form-group">
-					<label for="price">Price :</label>
-					<select id="price" name="price" >
-						<option value="{{data.price}}">&#8377 {{data.price}}</option>
-					</select>
-				</div>
-				<button type="submit" class="btn btn-info mx-1">Submit</button>
-			</form>
-			{% for message in messages %}
-			<h4>{{ message }}</h4>
-			{% endfor %}
+        <form class="form-inline" style="margin-top: 60px;" action="/book_room/" method="post">
+            {% csrf_token %}
+
+            <h3>
+                Book with
+                <i class="fa-solid fa-hotel"></i>
+                {{ hotel.name }}
+            </h3>
+
+            <p>
+                Hotel room number
+                <i class="fa-solid fa-door-open"></i>
+                {{ room.room_number }}
+            </p>
+
+            <p>
+                Price per day: USD
+                <i class="fa-solid fa-dollar-sign"></i>
+                {{ room.price }}
+            </p>
+
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </span>
+                    </div>
+                    {{ form.start }}
+                </div>
+            </div>
+
+            <span class="text-danger">{{ form.start.errors }}</span>
+
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </span>
+                    </div>
+                    {{ form.end }}
+                </div>
+            </div>
+
+            <span class="text-danger">{{ form.start.errors }}</span>
+
+            <button type="submit" class="btn btn-info mx-1">
+                <i class="fa-solid fa-bookmark"></i>
+                Book now!
+            </button>
+
+        </form>
+        {% for message in messages %}
+        <h4>{{ message }}</h4>
+        {% endfor %}
 	</div>
-		
-	
 
 </body>
 <!-- </html> -->

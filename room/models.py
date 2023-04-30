@@ -13,9 +13,10 @@ class rooms_booked(models.Model):
 		return (str([self.room_id, self.start, self.end, self.is_booked, 
 					self.user_booked, self.owner, self.hotel, self.price]))
 	room_id = models.IntegerField()
+
 	start = models.DateField()
+
 	end = models.DateField()
-	is_booked = models.BooleanField()
 	user_booked = models.CharField(max_length=100)
 	owner = models.CharField(max_length=50)
 	hotel = models.CharField(max_length=50)
