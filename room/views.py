@@ -4,7 +4,7 @@ from room.models import rooms_history, rooms_booked, rooms_added, hotels
 from room.forms import login_form, booking_form, deletion, add_room
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from datetime import date
+import datetime
 
 
 #__________________User Authentication________________________________________________________________________# 
@@ -145,33 +145,26 @@ def profile(request):
 def book_room(request):
 	user = request.user.username
 	if request.method == "POST":
-		hotel = request.POST['hotel']
-		start = request.POST['start']
-		end = request.POST['end']
-		guest = request.POST['guest']
-		rno = request.POST['from']
-		price = request.POST['price']
-		hdata = hotels.objects.get(name=hotel)
-		owner = hdata.owner
 
-		try:	
-			r =rooms_booked.objects.get(owner=owner, room_id=rno)
-			messages.info(request, 'room is already booked')
-			return render(request, 'room/book_cust.html')
-		except:
-			room = rooms_booked()
-			room.room_id = rno
-			room.owner = owner
-			room.start = start
-			room.end = end
-			room.is_booked = True
-			room.user_booked = user
-			room.hotel = hotel
-			room.price = price
-			room.save()
-			messages.info( request, 'room booked sucessfully')
-			return render(request, 'room/book_cust.html')
-		
+		form = booking_form(request.POST)
+		if form.is_valid():
+
+			hotel_name = request.POST['btnSubmit']
+			room_number = request.POST['room_number']
+
+			start = form.cleaned_data.get("start")
+			end = form.cleaned_data.get("end")
+
+			hotel = hotels.objects.get(name=hotel_name)
+
+			rooms = rooms_added.objects.get(owner=hotel.owner, room_number=room_number)
+			rooms.is_booked = 1
+
+			booked_room = rooms_booked(room_id=rooms.id, start=start, end=end, user_booked=user, owner=hotel.owner, hotel=hotel_name, price=0)
+			booked_room.save()
+			rooms.save()
+
+			return redirect('/explore/')
 			
 	else:
 		try:
@@ -188,6 +181,7 @@ def book_room(request):
 					'room': room
 				}
 			)
+
 		except:
 			return redirect('/explore/')
 

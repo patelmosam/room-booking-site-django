@@ -23,7 +23,7 @@
 <body>
     <img class="background_1" src="/static/images/bg_img_1.jpg" alt="there was an image supposed to show here">
 	<div class="container" style="height:750px;">
-        <form class="form-inline" style="margin-top: 60px;" action="/book_room/" method="post">
+        <form id="form-inline" class="form-inline" style="margin-top: 60px;" action="/book_room/" method="post">
             {% csrf_token %}
 
             <h3>
@@ -38,12 +38,15 @@
                 {{ room.room_number }}
             </p>
 
-            <p>
+            <p id="parent-to-booking-message" class="{{ room.price }}">
                 Price per day: USD
                 <i class="fa-solid fa-dollar-sign"></i>
                 {{ room.price }}
             </p>
 
+            <div class="booking-message"></div>
+
+<!-- input tags starts here ------------------------------------------------------------------------------------------->
             <div class="form-group">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -52,6 +55,7 @@
                         </span>
                     </div>
                     {{ form.start }}
+                    <div class="error"></div>
                 </div>
             </div>
 
@@ -65,16 +69,27 @@
                         </span>
                     </div>
                     {{ form.end }}
+                    <div class="error"></div>
                 </div>
             </div>
 
             <span class="text-danger">{{ form.start.errors }}</span>
 
-            <button type="submit" class="btn btn-info mx-1">
-                <i class="fa-solid fa-bookmark"></i>
-                Book now!
-            </button>
+            <div class="booking-buttons">
+                <button type="submit" class="btn btn-info mx-1" value="{{hotel.name}}" name="btnSubmit">
+                    <i class="fa-solid fa-bookmark"></i>
+                    Book now!
+                </button>
 
+                <input type="number" class="room_number" name="room_number" value="{{room.room_number}}">
+
+                <button id="btnCheck" class="btn btn-info mx-1" name="btnCkeck">
+                    <i class="fa-solid fa-eye"></i>
+                    check your booking details
+                </button>
+            </div>
+
+<!-- input tags starts here ------------------------------------------------------------------------------------------->
         </form>
         {% for message in messages %}
         <h4>{{ message }}</h4>
@@ -84,3 +99,7 @@
 </body>
 <!-- </html> -->
 {% endblock %}
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+    <script src="/static/js/book_cust.js"></script>
+{% endblock javascripts %}

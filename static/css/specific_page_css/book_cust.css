@@ -52,3 +52,12 @@
     display: flex;
     top: 0;
 }
+.booking-buttons{
+    display: flex;
+    width: 395px;
+    max-width: 100%;
+    justify-content: space-between;
+}
+.room_number{
+    display: none;
+}

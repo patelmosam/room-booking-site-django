@@ -7,20 +7,19 @@ from django.db import models
 # 		return (str([self.username, self.password]))
 # 	username = models.CharField(max_length=100)
 # 	password = models.CharField(max_length=100)
-
 class rooms_booked(models.Model):
 	def __str__(self):
 		return (str([self.room_id, self.start, self.end, self.is_booked, 
 					self.user_booked, self.owner, self.hotel, self.price]))
-	room_id = models.IntegerField()
+	room_id = models.IntegerField(default=0)
 
-	start = models.DateField()
+	start = models.DateTimeField(default='')
 
-	end = models.DateField()
-	user_booked = models.CharField(max_length=100)
-	owner = models.CharField(max_length=50)
-	hotel = models.CharField(max_length=50)
-	price = models.IntegerField()
+	end = models.DateTimeField(default='')
+	user_booked = models.CharField(max_length=100, default='')
+	owner = models.CharField(max_length=50, default='')
+	hotel = models.CharField(max_length=50, default='')
+	price = models.IntegerField(default=0)
 
 
 # class manager_login(models.Model):

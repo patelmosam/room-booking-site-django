@@ -1,6 +1,10 @@
 from django import forms
 from .models import *
 
+import datetime
+
+now = datetime.datetime.now()
+now_string = "{:02d}-{:02d}-{:02d} {:02d}:{:02d}:00".format(now.year, now.month, now.day, now.hour, now.minute)
 
 class login_form(forms.Form):
 	username = forms.CharField(max_length=100)
@@ -10,22 +14,26 @@ class login_form(forms.Form):
 class booking_form(forms.Form):
 
 	start = forms.DateTimeField(
-		widget=forms.widgets.DateInput(
+		widget=forms.widgets.DateTimeInput(
 			attrs={
 				'type': 'datetime-local',
 				'placeholder': 'when do you want to check in',
 				'title': 'Enter the date you want to start your stay in this room',
 				'class': 'date-input-1',
+				'id': 'date-input-1',
+				"min": now_string
  			}
 		))
 
 	end = forms.DateTimeField(
-		widget=forms.widgets.DateInput(
+		widget=forms.widgets.DateTimeInput(
 			attrs={
 				'type': 'datetime-local',
 				'placeholder': 'when do you want to check in',
 				'title': 'Enter the date you want to start your stay in this room',
 				'class': 'date-input-2',
+				'id': 'date-input-2',
+				"min": now_string
 			}
 		))
 

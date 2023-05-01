@@ -73,15 +73,16 @@
                                     {{ room_pro.room_description }}
                                 </p>
                             </div>
-
-                            <button
-                                    class="btnDel"
-                                    name="btnDel_{{ room_pro.room_number }}"
-                                    type="submit"
-                                    value="test_name"
-                            >
-                                <i class="fa-solid fa-trash-can"></i> Unshelve room
-                            </button>
+                            {% if room_pro.is_booked == 0 %}
+                                <button
+                                        class="btnDel"
+                                        name="btnDel_{{ room_pro.room_number }}"
+                                        type="submit"
+                                        value="test_name"
+                                >
+                                    <i class="fa-solid fa-trash-can"></i> Unshelve room
+                                </button>
+                            {% endif %}
                         </div>
 
                         <!--- THIS DISPLAYS WHEN USER IS A MANAGER -- DEVELOPED BY ELITE TEAM DEV---------------------->
@@ -121,14 +122,17 @@
                                     </p>
                                 </div>
 
-                                <button
-                                    class="btn btn-info mx-1"
-                                    name="btnBook_{{ room_pro.room_number }}"
-                                    value="{{room_pro.owner}}"
-                                    type="submit"
-                                >
-                                    <i class="fa-solid fa-cart-shopping"></i> Book Room
-                                </button>
+                                {% if room_pro.is_booked == 0 %}
+                                    <button
+                                        class="btn btn-info mx-1"
+                                        name="btnBook_{{ room_pro.room_number }}"
+                                        value="{{room_pro.owner}}"
+                                        type="submit"
+                                    >
+                                        <i class="fa-solid fa-cart-shopping"></i> Book Room
+                                    </button>
+                                {% endif %}
+
                             </div>
                         </div>
                         <!--- THIS DISPLAYS WHEN USER IS A CLIENT -- DEVELOPED BY ELITE TEAM DEV----------------------->

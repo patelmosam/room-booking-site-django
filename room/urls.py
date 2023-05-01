@@ -14,10 +14,9 @@ urlpatterns = [
 	path('book_room/', views.book_room, name="book_room"),
 	path('view_book/', views.view_book, name='view_book'),
 	path('explore/', views.explore, name='explore'),
-	
 
 	path('add_rooms/', views.add_rooms, name='add_rooms'),
 	path('my_hotel/', views.my_hotel, name='my_hotel'),
-	path('booked_rooms/', views.booked_rooms, name='booked_rooms'),
+	path('booked_rooms/', views.booked_rooms, name='booked_rooms')
 
 ]
