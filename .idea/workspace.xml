@@ -6,21 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="66e92dfe-2678-40bf-a044-1fd008e826b2" name="Changes" comment="Update workspace.xml">
       <change afterPath="$PROJECT_DIR$/static/css/specific_page_css/add_rooms_2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/bg_img_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/bg_img_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/modern-studio-apartment-design-with-bedroom-living-space_4CrXi3o.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/pillow-bed.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/stock-photo-swimming-pool-on-a-deck-at-a-safari-lodge-in-south-afric_iqC6vsF.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/room/templates/room/addrooms.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/addrooms.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/room/templates/room/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/room/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/room/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/specific_page_css/add_rooms.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/specific_page_css/add_rooms_1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/specific_page_css/book_cust.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/specific_page_css/book_cust.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/IMG_20220501_172209.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/bg_img_0.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/bg_img_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/bg_img_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/glyco_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/rooms/IMG_20221231_120248_188.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/rooms/IMG_20221231_120259_485.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/rooms/IMG_2173.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/rooms/IMG_2173_pb1vARZ.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/rooms/pexels-ram-iyengar-2875698_yX1s3e0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/rooms/pexels-ramazan-ceran-5648605.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/rooms/pexels-ramazan-ceran-5648605_lHucqE7.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/rooms/pexels-skitterphoto-2678.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_8g03kvM.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_AHpLS6l.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_AbZJ8MJ.jpg" beforeDir="false" />
@@ -29,6 +33,7 @@
       <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_xs9nnHV.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_yD1Hhzp.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_z4P2ma6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/wallpaperflare.com_wallpaper.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +124,7 @@
       <workItem from="1682430813003" duration="15853000" />
       <workItem from="1682767987884" duration="45276000" />
       <workItem from="1682846327573" duration="31659000" />
-      <workItem from="1682957249871" duration="14802000" />
+      <workItem from="1682957249871" duration="15371000" />
     </task>
     <task id="LOCAL-00001" summary="explore to book now">
       <created>1682670644294</created>
