@@ -204,95 +204,97 @@ def view_book(request):
 
 def add_rooms(request):
 	# username = request.session["rmname"]
-	owner = request.user.username
-	rooms_pro = rooms_added.objects.filter(owner=owner)
+	try:
+		owner = request.user.username
+		rooms_pro = rooms_added.objects.filter(owner=owner)
 
-	if request.method == "POST":
-		if (request.POST.get('add_room', False)) is not False:
+		if request.method == "POST":
+			if (request.POST.get('add_room', False)) is not False:
 
-			if len(request.POST['room_number']) is not 0 and len(request.POST['price']) is not 0:
+				if len(request.POST['room_number']) is not 0 and len(request.POST['price']) is not 0:
 
-				room_number = request.POST['room_number']
-				price = request.POST['price']
-				description = request.POST['description']
+					room_number = request.POST['room_number']
+					price = request.POST['price']
+					description = request.POST['description']
 
-				try:
-					# when this line generates en error the exception handling catches it and runs the 'except_block'
-					error_generation_line = rooms_added.objects.get(owner=owner, room_number=room_number)
-					messages.info(request, 'that room was already added')
+					try:
+						# when this line generates en error the exception handling catches it and runs the 'except_block'
+						error_generation_line = rooms_added.objects.get(owner=owner, room_number=room_number)
+						messages.info(request, 'that room was already added')
 
-				except:
-					room = rooms_added()
-					room.owner = owner
-					room.room_number = room_number
-					room.date_added = date.today()
-					room.price = price
-					room.is_booked = 0
-					room.room_description = description
-					room.save()
-					messages.info(request, 'Rooms are added')
+					except:
+						room = rooms_added()
+						room.owner = owner
+						room.room_number = room_number
+						room.date_added = date.today()
+						room.price = price
+						room.is_booked = 0
+						room.room_description = description
+						room.save()
+						messages.info(request, 'Rooms are added')
 
-				return redirect('/add_rooms/#add_rooms')
+					return redirect('/add_rooms/#add_rooms')
+				else:
+					messages.info(request, 'please enter data')
+					return redirect('/add_rooms/#add_rooms')
+
+			elif not request.user.is_superuser:
+
+				rooms = rooms_added.objects.all()
+
+				for room in rooms:
+					if (request.POST.get('btnBook_'+str(room.room_number), False)) is not False:
+
+						request.session['owner'] = request.POST['btnBook_'+str(room.room_number)]
+						request.session['room_number'] = room.room_number
+
+						return redirect('/book_room/')
+
 			else:
-				messages.info(request, 'please enter data')
-				return redirect('/add_rooms/#add_rooms')
+				for rooms_pro in rooms_pro:
+					if (request.POST.get('btnDel_' + str(rooms_pro.room_number), False)) is not False:
+						room = rooms_added.objects.get(owner=owner, room_number=rooms_pro.room_number)
+						room.delete()
+						return redirect('/add_rooms/')
 
-		elif not request.user.is_superuser:
 
-			rooms = rooms_added.objects.all()
+					try:
+						if (request.POST.get('btnUpload_File_' + str(rooms_pro.room_number), False)) is not False:
+							picture = request.FILES['UpLoad_' + str(rooms_pro.room_number)]
+							room = rooms_added.objects.get(owner=owner, room_number=rooms_pro.room_number)
+							room.room_picture.delete()
+							room.room_picture = picture
+							room.save()
 
-			for room in rooms:
-				if (request.POST.get('btnBook_'+str(room.room_number), False)) is not False:
-
-					request.session['owner'] = request.POST['btnBook_'+str(room.room_number)]
-					request.session['room_number'] = room.room_number
-
-					return redirect('/book_room/')
+							return redirect('/add_rooms/')
+					except:
+						return redirect('/add_rooms/')
 
 		else:
-			for rooms_pro in rooms_pro:
-				if (request.POST.get('btnDel_' + str(rooms_pro.room_number), False)) is not False:
-					room = rooms_added.objects.get(owner=owner, room_number=rooms_pro.room_number)
-					room.delete()
-					return redirect('/add_rooms/')
+			try:
+				owner = request.user.username
 
+				context = {}
 
-				try:
-					if (request.POST.get('btnUpload_File_' + str(rooms_pro.room_number), False)) is not False:
-						picture = request.FILES['UpLoad_' + str(rooms_pro.room_number)]
-						room = rooms_added.objects.get(owner=owner, room_number=rooms_pro.room_number)
-						room.room_picture.delete()
-						room.room_picture = picture
-						room.save()
+				hotel_pro = hotels.objects.get(owner=owner)
 
-						return redirect('/add_rooms/')
-				except:
-					return redirect('/add_rooms/')
+				context['hotel_pro'] = hotel_pro
+				context['rooms_pro'] = rooms_pro
+				return render(request, 'room/addrooms.html', context)
 
-	else:
-		try:
-			owner = request.user.username
+			except:
+				hotel = request.GET.get('name')
+				context = {}
 
-			context = {}
+				hotel_pro = hotels.objects.get(name=hotel)
+				rooms = rooms_added.objects.filter(owner=hotel_pro.owner)
 
-			hotel_pro = hotels.objects.get(owner=owner)
+				context['hotel_pro'] = hotel_pro
+				context['rooms_pro'] = rooms
 
-			context['hotel_pro'] = hotel_pro
-			context['rooms_pro'] = rooms_pro
-			return render(request, 'room/addrooms.html', context)
-
-		except:
-			hotel = request.GET.get('name')
-			context = {}
-
-			hotel_pro = hotels.objects.get(name=hotel)
-			rooms = rooms_added.objects.filter(owner=hotel_pro.owner)
-
-			context['hotel_pro'] = hotel_pro
-			context['rooms_pro'] = rooms
-
-			return render(request, 'room/addrooms.html', context)
-
+				return render(request, 'room/addrooms.html', context)
+	except:
+		return render(request, 'room/error_response.html')
 
 
 def my_hotel(request):
@@ -357,8 +359,12 @@ def my_hotel(request):
 			return render(request, "room/my_hotel.html")
 
 def booked_rooms(request):
-	user = request.user.username
-	hotel = hotels.objects.get(owner=user)
-	hotel = hotel.name
-	data = [x for x in rooms_booked.objects.all() if x.hotel==hotel]
-	return render(request, 'room/booked_rooms.html', {'data': data})
+	try:
+		user = request.user.username
+		hotel = hotels.objects.get(owner=user)
+		hotel = hotel.name
+		data = [x for x in rooms_booked.objects.all() if x.hotel==hotel]
+		return render(request, 'room/booked_rooms.html', {'data': data})
+
+	except:
+		return render(request, 'room/error_response.html')

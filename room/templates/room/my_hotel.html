@@ -88,8 +88,11 @@ body {
                     <img src="/{{picture_filename}}" id="photo">
                 {% endwith %}
 
-                <input type="submit" class="btnUpload_File" name="btnUpload_File_2" value="Update">
-                <input type="file" name="UpLoad" id="UpLoad" accept="image/*" required>
+                {% if data.name %}
+                    <input type="submit" class="btnUpload_File" name="btnUpload_File_2" value="Update">
+                    <input type="file" name="UpLoad" id="UpLoad" accept="image/*" required>
+                {% endif %}
+
             </div>
 
         </form>
@@ -103,11 +106,11 @@ body {
 
                 <div class="form-group">
                     <label for="name" >Name of Hotel:</label>
-                    <input type="text" name="name" id="name" placeholder="{{data.name}}" class="form-control">
+                    <input type="text" required name="name" id="name" placeholder="{{data.name}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="address" > Address of Hotel:</label>
-                    <input type="adderss" name="adderss" id="adderss" placeholder="{{data.address}}" class="form-control">
+                    <input type="adderss" required name="adderss" id="adderss" placeholder="{{data.address}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <input type="submit" name="save" class="btn btn-info btn-md" value="save">
@@ -150,6 +153,7 @@ body {
                                 <label for="discription" class="text-info">Discription:</label><br>
                                 <input type="text" required name="discription" id="discription" placeholder="{{data.discription}}" class="form-control">
                             </div>
+                            {% if data.name %}
                             <div class="form-group">
                                 <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
 								<input type="submit" name="save2" class="btn btn-info btn-md" value="save">
@@ -159,6 +163,7 @@ body {
 									</button>
 								</a> -->
                             </div>
+                            {% endif %}
                             <!-- <div id="register-link" class="text-right">
                                 <a href="#" class="text-info">Forget Password</a>
                             </div> -->

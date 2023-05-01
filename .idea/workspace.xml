@@ -4,31 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66e92dfe-2678-40bf-a044-1fd008e826b2" name="Changes" comment="Update workspace.xml">
-      <change afterPath="$PROJECT_DIR$/static/css/specific_page_css/add_rooms_2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/bg_img_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/bg_img_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/modern-studio-apartment-design-with-bedroom-living-space_4CrXi3o.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/pillow-bed.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/rooms/stock-photo-swimming-pool-on-a-deck-at-a-safari-lodge-in-south-afric_iqC6vsF.jpg" afterDir="false" />
+    <list default="true" id="66e92dfe-2678-40bf-a044-1fd008e826b2" name="Changes" comment="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;room/templates/room/addrooms.html&#10;#&#9;room/views.py&#10;#&#9;static/css/specific_page_css/book_cust.css">
+      <change afterPath="$PROJECT_DIR$/room/templates/room/error_response.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/pillow-bed.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room/templates/room/addrooms.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/addrooms.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room/templates/room/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/room/templates/room/my_hotel.html" beforeDir="false" afterPath="$PROJECT_DIR$/room/templates/room/my_hotel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/room/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/room/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/specific_page_css/add_rooms.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/specific_page_css/add_rooms_1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/specific_page_css/book_cust.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/specific_page_css/book_cust.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/bg_img_0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/bg_img_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/bg_img_1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/pexels-ramazan-ceran-5648605_lHucqE7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/pexels-skitterphoto-2678.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_8g03kvM.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_AHpLS6l.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_AbZJ8MJ.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_S2sBQEh.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_jyfm3V1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_xs9nnHV.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_yD1Hhzp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/rooms/wallpaperflare.com_wallpaper_z4P2ma6.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -65,23 +47,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;room__booking__new&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "room__booking__new",
+    "ignore.virus.scanning.warn.message": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Spencer\Documents\GitHub\room-booking-site-django\room\templates\room" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="room-booking-site-django" type="Python.DjangoServer" factoryName="Django server">
       <module name="room-booking-site-django" />
@@ -119,7 +107,8 @@
       <workItem from="1682430813003" duration="15853000" />
       <workItem from="1682767987884" duration="45276000" />
       <workItem from="1682846327573" duration="31659000" />
-      <workItem from="1682957249871" duration="14802000" />
+      <workItem from="1682957249871" duration="16193000" />
+      <workItem from="1682980733600" duration="3177000" />
     </task>
     <task id="LOCAL-00001" summary="explore to book now">
       <created>1682670644294</created>
@@ -170,7 +159,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682893392796</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Update workspace.xml">
+      <created>1682979879437</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1682979879437</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;room/templates/room/addrooms.html&#10;#&#9;room/views.py&#10;#&#9;static/css/specific_page_css/book_cust.css">
+      <created>1682980336246</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682980336246</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,14 +197,15 @@
     <MESSAGE value="Merge branch 'room_booking_new' of https://github.com/EliteTeamDev/room-booking-site-django into room_booking_new" />
     <MESSAGE value="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new" />
     <MESSAGE value="Update workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update workspace.xml" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;room/templates/room/addrooms.html&#10;#&#9;room/views.py&#10;#&#9;static/css/specific_page_css/book_cust.css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/room_booking_new' into room_booking_new&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;room/templates/room/addrooms.html&#10;#&#9;room/views.py&#10;#&#9;static/css/specific_page_css/book_cust.css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/room/views.py</url>
-          <line>328</line>
+          <line>330</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
